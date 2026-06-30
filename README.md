@@ -1,13 +1,3 @@
-# Maderegger CE Suite V0.2
+# Maderegger CE Suite V0.4
 
-Enthalten:
-- Dashboard
-- Projektdaten-Modul
-- Maschinenarten
-- automatische Normenvorschläge
-- Lebensphasen
-- Ausstattung
-- lokale Projektspeicherung
-- JSON-Export
-
-Nächster Sprint: Förderband-Gefährdungskatalog mit Ja/Nein-Fragen.
+Neu: CSV/Word/PDF-Druck-Export, erweiterter mechanischer Gefährdungskatalog.
