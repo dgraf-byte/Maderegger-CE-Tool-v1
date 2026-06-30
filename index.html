@@ -11,7 +11,7 @@
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite V0.2</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite V0.3</span></div>
       </div>
       <nav>
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
@@ -39,7 +39,7 @@
         <div class="grid cards">
           <article class="card"><span class="label">Aktuelles Projekt</span><h2 id="dashProject">Kein Projekt gewählt</h2><p id="dashCustomer">Bitte Projektdaten erfassen.</p></article>
           <article class="card"><span class="label">Fortschritt</span><h2 id="dashProgress">0%</h2><div class="progress"><span id="progressBar"></span></div></article>
-          <article class="card"><span class="label">Maschinenart</span><h2 id="dashMachine">-</h2><p id="dashNorms">Normen werden automatisch vorgeschlagen.</p></article>
+          <article class="card"><span class="label">Risikoanalyse</span><h2 id="dashRisk">0 / 0</h2><p id="dashRiskInfo">Noch keine Gefährdungen bewertet.</p></article>
         </div>
         <div class="panel">
           <h2>Projektliste</h2>
@@ -76,6 +76,10 @@
 
           <h2>Lebensphasen</h2>
           <div id="lifePhaseList" class="check-grid"></div>
+
+          <div class="form-actions bottom-save">
+            <button type="button" id="saveProjectBottomBtn" class="btn primary">Projekt speichern</button>
+          </div>
         </form>
       </section>
 
@@ -84,11 +88,24 @@
       </section>
 
       <section id="risk" class="view">
-        <div class="panel"><h2>Risikoanalyse</h2><p>Kommt im nächsten Sprint: Förderband-Gefährdungskatalog mit Ja/Nein-Fragen.</p></div>
+        <div class="panel risk-head">
+          <div>
+            <h2>Risikoanalyse</h2>
+            <p>Gefährdungen per Ja/Nein durchgehen. Bei „Ja“ wird die Risikobewertung geöffnet.</p>
+          </div>
+          <div class="risk-summary">
+            <strong id="riskAnswered">0 / 0 beantwortet</strong>
+            <span id="riskYesCount">0 Gefährdungen vorhanden</span>
+          </div>
+        </div>
+        <div id="riskList" class="risk-list"></div>
+        <div class="panel form-actions bottom-save">
+          <button type="button" id="saveRiskBottomBtn" class="btn primary">Risikoanalyse speichern</button>
+        </div>
       </section>
 
       <section id="documents" class="view">
-        <div class="panel"><h2>Dokumente</h2><button id="exportJsonBtn" class="btn primary">Projekt als JSON exportieren</button><p class="muted">Word-/Excel-/PDF-Export folgt nach dem Gefährdungskatalog.</p></div>
+        <div class="panel"><h2>Dokumente</h2><button id="exportJsonBtn" class="btn primary">Projekt als JSON exportieren</button><p class="muted">Word-/Excel-/PDF-Export folgt nach dem vollständigen Gefährdungskatalog.</p></div>
       </section>
     </main>
   </div>
