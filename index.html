@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maderegger CE Suite</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          <strong>Maderegger</strong>
+          <span>CE Suite</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+        <button class="nav-btn" data-view="projects">Projekte</button>
+        <button class="nav-btn" data-view="newProject">Neues Projekt</button>
+        <button class="nav-btn" data-view="norms">Normen</button>
+        <button class="nav-btn" data-view="risk">Risikoanalyse</button>
+      </nav>
+      <div class="version">Version 0.1 Alpha</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">Dashboard</h1>
+          <p>Konformitätsbewertung und Risikobeurteilung nach Maschinenrichtlinie / Maschinenverordnung.</p>
+        </div>
+        <button class="primary" id="newProjectTop">+ Neues Projekt</button>
+      </header>
+
+      <section id="view-dashboard" class="view active">
+        <div class="grid cards-3">
+          <article class="card">
+            <span class="label">Projekte</span>
+            <strong id="projectCount">0</strong>
+            <p>lokal gespeicherte Projekte</p>
+          </article>
+          <article class="card">
+            <span class="label">Aktiver Fokus</span>
+            <strong>Förderband</strong>
+            <p>erstes Modul mit EN 619</p>
+          </article>
+          <article class="card">
+            <span class="label">Status</span>
+            <strong>V0.1</strong>
+            <p>Grundsystem aktiv</p>
+          </article>
+        </div>
+
+        <article class="card large">
+          <h2>Letzte Projekte</h2>
+          <div id="recentProjects" class="empty">Noch kein Projekt angelegt.</div>
+        </article>
+      </section>
+
+      <section id="view-projects" class="view">
+        <article class="card large">
+          <h2>Projektübersicht</h2>
+          <div id="projectList" class="empty">Noch keine Projekte vorhanden.</div>
+        </article>
+      </section>
+
+      <section id="view-newProject" class="view">
+        <article class="card large">
+          <h2>Neues Projekt anlegen</h2>
+          <form id="projectForm" class="form-grid">
+            <label>Projektnummer<input name="projectNo" placeholder="z. B. 26045" required></label>
+            <label>Kunde<input name="customer" placeholder="Kundenname"></label>
+            <label>Maschinenbezeichnung<input name="machineName" placeholder="z. B. FB95-B Förderband"></label>
+            <label>Maschinenart<select name="machineType" id="machineType"></select></label>
+            <label>Konstrukteur<input name="designer" placeholder="Name"></label>
+            <label>CE-Verantwortlicher<input name="ceResponsible" placeholder="Name"></label>
+            <label>Baujahr<input name="year" placeholder="2026"></label>
+            <label>Seriennummer<input name="serial" placeholder="optional"></label>
+            <div class="full actions">
+              <button type="submit" class="primary">Projekt speichern</button>
+              <button type="reset" class="secondary">Zurücksetzen</button>
+            </div>
+          </form>
+        </article>
+      </section>
+
+      <section id="view-norms" class="view">
+        <article class="card large">
+          <h2>Normenmanager</h2>
+          <p class="muted">Automatische Normenvorschläge je Maschinenart. In V0.2 werden diese mit Gefährdungen verknüpft.</p>
+          <div id="normList" class="norm-list"></div>
+        </article>
+      </section>
+
+      <section id="view-risk" class="view">
+        <article class="card large">
+          <h2>Risikoanalyse</h2>
+          <p>Dieses Modul folgt in Version 0.2. Grundlage: Ja/Nein-Gefährdungsfragen, anschließend S/F/P-Bewertung und Maßnahmen.</p>
+          <div class="placeholder">Nächster Schritt: Förderband-Gefährdungskatalog nach EN 619.</div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
