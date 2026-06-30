@@ -1,13 +1,8 @@
-# Changelog
+# V0.5
 
-## V0.4
-- Dokumente-Seite erweitert
-- CSV-Export für Excel ergänzt
-- Word-Export als .doc ergänzt
-- PDF/Drucken ergänzt
-- Gefährdungskatalog erweitert: Einziehen/Fangen, Scheren, Schneiden/Kanten, Auswurf/Herabfallen, Wartung/Reinigung
-
-## V0.3
-- Risikoanalyse mit Ja/Nein-Karten
-- Quetschstellen-Fragen
+- Risikoanalyse neu aufgebaut
+- Ja/Nein-Fragen sichtbar als Karten
+- Detailbewertung öffnet bei „Ja“
 - S/F/P-Bewertung
+- Maßnahmen und Restrisiko
+- Fallback-Gefährdungskatalog direkt in app.js, falls data/gefahren.json nicht lädt

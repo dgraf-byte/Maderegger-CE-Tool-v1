@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maderegger CE Suite</title>
+  <title>Maderegger CE Suite V0.5</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -11,27 +11,27 @@
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite V0.4</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite V0.5</span></div>
       </div>
       <nav>
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
         <button class="nav-btn" data-view="project">Projektdaten</button>
-        <button class="nav-btn" data-view="norms">Normen</button>
         <button class="nav-btn" data-view="risk">Risikoanalyse</button>
+        <button class="nav-btn" data-view="norms">Normen</button>
         <button class="nav-btn" data-view="documents">Dokumente</button>
       </nav>
-      <div class="sidebar-note">Speicherung aktuell lokal im Browser.</div>
+      <div class="sidebar-note">Daten werden lokal im Browser gespeichert.</div>
     </aside>
 
     <main class="content">
       <header class="topbar">
         <div>
           <h1 id="pageTitle">Dashboard</h1>
-          <p id="pageSubtitle">Interne CE- und Risikobeurteilungsplattform</p>
+          <p id="pageSubtitle">CE- und Risikoanalyse für Fördertechnik</p>
         </div>
         <div class="top-actions">
-          <button id="newProjectBtn" class="btn primary">+ Neues Projekt</button>
-          <button id="saveProjectBtn" class="btn">Speichern</button>
+          <button id="newProjectBtn" class="btn primary" type="button">+ Neues Projekt</button>
+          <button id="saveProjectBtn" class="btn" type="button">Speichern</button>
         </div>
       </header>
 
@@ -83,20 +83,21 @@
         </form>
       </section>
 
-      <section id="norms" class="view">
-        <div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div>
-      </section>
-
       <section id="risk" class="view">
         <div class="panel risk-head">
           <div>
             <h2>Risikoanalyse</h2>
-            <p>Gefährdungen per Ja/Nein durchgehen. Bei „Ja“ wird die Risikobewertung geöffnet.</p>
+            <p>Jede Gefährdung mit <strong>Ja</strong> oder <strong>Nein</strong> bewerten. Bei „Ja“ öffnet sich die Detailbewertung.</p>
           </div>
           <div class="risk-summary">
             <strong id="riskAnswered">0 / 0 beantwortet</strong>
             <span id="riskYesCount">0 Gefährdungen vorhanden</span>
           </div>
+        </div>
+        <div class="risk-toolbar panel">
+          <button type="button" id="showAllRiskBtn" class="btn small">Alle anzeigen</button>
+          <button type="button" id="showOpenRiskBtn" class="btn small">Nur offene</button>
+          <button type="button" id="showYesRiskBtn" class="btn small">Nur Ja</button>
         </div>
         <div id="riskList" class="risk-list"></div>
         <div class="panel form-actions bottom-save">
@@ -104,17 +105,19 @@
         </div>
       </section>
 
+      <section id="norms" class="view">
+        <div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div>
+      </section>
+
       <section id="documents" class="view">
         <div class="panel">
           <h2>Dokumente</h2>
-          <p>Erzeuge aus den Projektdaten und der Risikoanalyse erste Ausgabedateien.</p>
           <div class="doc-actions">
-            <button id="exportJsonBtn" class="btn">JSON-Sicherung</button>
-            <button id="exportCsvBtn" class="btn primary">Excel/CSV exportieren</button>
-            <button id="exportWordBtn" class="btn primary">Word-Dokument exportieren</button>
-            <button id="printReportBtn" class="btn">PDF/Drucken</button>
+            <button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button>
+            <button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV exportieren</button>
+            <button id="exportWordBtn" class="btn primary" type="button">Word-Dokument exportieren</button>
+            <button id="printReportBtn" class="btn" type="button">PDF/Drucken</button>
           </div>
-          <p class="muted">Hinweis: Word wird als .doc-Datei erzeugt und kann direkt in Microsoft Word geöffnet werden. Excel öffnet die CSV-Datei.</p>
         </div>
       </section>
     </main>

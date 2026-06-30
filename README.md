@@ -1,3 +1,3 @@
-# Maderegger CE Suite V0.4
+# Maderegger CE Suite V0.5
 
-Neu: CSV/Word/PDF-Druck-Export, erweiterter mechanischer Gefährdungskatalog.
+V0.5 fokussiert auf die funktionierende Risikoanalyse mit sichtbaren Ja/Nein-Karten.
