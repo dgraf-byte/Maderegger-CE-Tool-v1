@@ -1,12 +1,7 @@
 [
-  {"code":"EN ISO 12100","title":"Sicherheit von Maschinen – Risikobeurteilung und Risikominderung","type":"A-Norm"},
-  {"code":"EN 60204-1","title":"Elektrische Ausrüstung von Maschinen","type":"B-Norm"},
-  {"code":"EN ISO 13849-1","title":"Sicherheitsbezogene Teile von Steuerungen","type":"B-Norm"},
-  {"code":"EN ISO 13850","title":"Not-Halt-Funktion","type":"B-Norm"},
-  {"code":"EN ISO 13857","title":"Sicherheitsabstände gegen Erreichen von Gefährdungsbereichen","type":"B-Norm"},
-  {"code":"EN ISO 14119","title":"Verriegelungseinrichtungen in Verbindung mit trennenden Schutzeinrichtungen","type":"B-Norm"},
-  {"code":"EN ISO 14120","title":"Trennende Schutzeinrichtungen","type":"B-Norm"},
-  {"code":"EN 619","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an Stückgutförderer","type":"C-Norm"},
-  {"code":"EN 620","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an Gurtförderer für Schüttgut","type":"C-Norm"},
-  {"code":"EN 618","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an Förderer für Schüttgut ausgenommen ortsfeste Gurtförderer","type":"C-Norm"}
+  {"code":"EN ISO 12100","title":"Risikobeurteilung und Risikominderung"},
+  {"code":"EN 619","title":"Stetigförderer und Systeme für Stückgut"},
+  {"code":"EN 620","title":"Stationäre Gurtförderer für Schüttgut"},
+  {"code":"EN 618","title":"Stetigförderer für Schüttgut, ausgenommen stationäre Gurtförderer"},
+  {"code":"EN 60204-1","title":"Elektrische Ausrüstung von Maschinen"}
 ]
