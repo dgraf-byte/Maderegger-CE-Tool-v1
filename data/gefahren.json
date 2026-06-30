@@ -1,0 +1,200 @@
+[
+  {
+    "id": "M-Q-001",
+    "maschinen": ["foerderband", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Antrieb",
+    "frage": "Besteht eine Quetschstelle zwischen Fördergurt und Antriebstrommel?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Reinigung", "Wartung", "Störung"],
+    "standardMassnahmen": ["Einzugsstelle durch feststehende Schutzhaube sichern", "Sicherheitsabstände nach EN ISO 13857 berücksichtigen", "Zugang für Wartung nur nach Stillsetzen und Energieisolierung", "Restrisiko in Betriebsanleitung beschreiben"]
+  },
+  {
+    "id": "M-Q-002",
+    "maschinen": ["foerderband", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Umlenkung",
+    "frage": "Besteht eine Quetschstelle zwischen Fördergurt und Umlenktrommel?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Reinigung", "Wartung"],
+    "standardMassnahmen": ["Umlenkbereich mit Schutzabdeckung ausführen", "Eingriff in laufende Maschine verhindern", "Warnhinweis anbringen", "Reinigung nur bei Stillstand zulassen"]
+  },
+  {
+    "id": "M-Q-003",
+    "maschinen": ["foerderband"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Spannstation",
+    "frage": "Besteht eine Quetschstelle an der Spannstation oder an beweglichen Spannschlitten?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120"],
+    "lebensphasen": ["Einrichten", "Wartung", "Störung"],
+    "standardMassnahmen": ["Spannmechanik abdecken", "Einstellbereich so gestalten, dass keine Fingerquetschstelle entsteht", "Einstellanweisung in Betriebsanleitung ergänzen"]
+  },
+  {
+    "id": "M-Q-004",
+    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Übergabe",
+    "frage": "Besteht eine Quetschstelle an Übergabestellen zu vor- oder nachgeschalteten Anlagen?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Inbetriebnahme", "Wartung"],
+    "standardMassnahmen": ["Schnittstelle konstruktiv sichern", "Zugriff in Übergabebereich verhindern", "Abstimmung mit Fremdanlage dokumentieren", "Not-Halt-Verkettung prüfen"]
+  },
+  {
+    "id": "M-Q-005",
+    "maschinen": ["foerderband"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Rücklauf",
+    "frage": "Besteht eine Quetschstelle am Rücklaufgurt oder an Rücklaufrollen?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Reinigung", "Wartung"],
+    "standardMassnahmen": ["Rücklaufbereich gegen Eingriff sichern", "Rücklaufrollen in erreichbaren Bereichen abdecken", "Reinigungsanweisung ergänzen"]
+  },
+  {
+    "id": "M-Q-006",
+    "maschinen": ["foerderband", "rollenbahn"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Seitenführung",
+    "frage": "Besteht eine Quetschstelle zwischen Fördergut und Seitenführung?",
+    "normen": ["EN ISO 12100", "EN 619"],
+    "lebensphasen": ["Automatikbetrieb", "Störung", "Einrichten"],
+    "standardMassnahmen": ["Eingriff während des Betriebs verhindern", "Stau- und Störungsbeseitigung beschreiben", "Ausreichende Freiräume bzw. Schutzabstände vorsehen"]
+  },
+  {
+    "id": "M-Q-007",
+    "maschinen": ["foerderband", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Knickbereich",
+    "frage": "Besteht eine Quetschstelle im Knick- oder Übergangsbereich des Förderers?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120"],
+    "lebensphasen": ["Automatikbetrieb", "Reinigung", "Wartung"],
+    "standardMassnahmen": ["Knickbereich abdecken", "Zugänglichkeit begrenzen", "Warnhinweis und Reinigungsanweisung ergänzen"]
+  },
+  {
+    "id": "M-Q-008",
+    "maschinen": ["foerderband", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Hubbewegung",
+    "frage": "Besteht eine Quetschstelle durch Hub-, Senk- oder Zustellbewegungen?",
+    "normen": ["EN ISO 12100", "EN ISO 13849-1", "EN ISO 14120", "EN ISO 14119"],
+    "lebensphasen": ["Automatikbetrieb", "Handbetrieb", "Einrichten", "Wartung"],
+    "standardMassnahmen": ["Gefahrenbereich durch Schutzeinrichtung absichern", "Sicherheitsfunktion bewerten", "Einrichtbetrieb mit reduzierter Geschwindigkeit prüfen", "Restenergie berücksichtigen"]
+  },
+  {
+    "id": "M-Q-009",
+    "maschinen": ["foerderband", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Klappen / Türen",
+    "frage": "Besteht eine Quetschstelle an beweglichen Klappen, Abdeckungen oder Schutztüren?",
+    "normen": ["EN ISO 12100", "EN ISO 14120", "EN ISO 14119"],
+    "lebensphasen": ["Reinigung", "Wartung", "Störung"],
+    "standardMassnahmen": ["Scharniere und Anschläge quetscharm ausführen", "Gasdruckdämpfer oder mechanische Sicherung prüfen", "Bei sicherheitsrelevanter Tür Verriegelung vorsehen"]
+  },
+  {
+    "id": "M-Q-010",
+    "maschinen": ["foerderband", "rollenbahn", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Fördergut",
+    "frage": "Besteht eine Quetschgefahr zwischen bewegtem Fördergut und festen Maschinenteilen?",
+    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Störung"],
+    "standardMassnahmen": ["Gefahrenbereich konstruktiv vermeiden oder abdecken", "Störungsbeseitigung nur bei Stillstand", "Produktführung prüfen"]
+  },
+  {
+    "id": "M-Q-011",
+    "maschinen": ["foerderband", "rollenbahn"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Stauzone",
+    "frage": "Besteht eine Quetschstelle durch Stau oder Ansammlung von Fördergut?",
+    "normen": ["EN ISO 12100", "EN 619"],
+    "lebensphasen": ["Automatikbetrieb", "Störung"],
+    "standardMassnahmen": ["Stauerkennung prüfen", "Zugriff auf Stauzone begrenzen", "Vorgehen zur Störungsbeseitigung dokumentieren"]
+  },
+  {
+    "id": "M-Q-012",
+    "maschinen": ["foerderband"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Abstreifer",
+    "frage": "Besteht eine Quetschstelle an Abstreifern oder Reinigungsleisten?",
+    "normen": ["EN ISO 12100", "EN 619"],
+    "lebensphasen": ["Automatikbetrieb", "Reinigung", "Wartung"],
+    "standardMassnahmen": ["Abstreiferbereich abdecken", "Einstellarbeiten nur bei Stillstand", "Wartungsanweisung ergänzen"]
+  },
+  {
+    "id": "M-Q-013",
+    "maschinen": ["foerderband", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Antriebselemente",
+    "frage": "Besteht eine Quetschstelle an Kupplung, Kettenrad, Riemenscheibe oder Getriebeantrieb?",
+    "normen": ["EN ISO 12100", "EN ISO 14120", "EN ISO 13857"],
+    "lebensphasen": ["Automatikbetrieb", "Wartung"],
+    "standardMassnahmen": ["Antriebselemente vollständig abdecken", "Schutzabdeckung werkzeuggebunden ausführen", "Wartung nur bei Energieisolierung"]
+  },
+  {
+    "id": "M-Q-014",
+    "maschinen": ["foerderband", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Pneumatik",
+    "frage": "Besteht eine Quetschstelle durch pneumatische Zylinder oder Greifer?",
+    "normen": ["EN ISO 12100", "EN ISO 13849-1", "EN ISO 14120"],
+    "lebensphasen": ["Automatikbetrieb", "Handbetrieb", "Einrichten", "Wartung"],
+    "standardMassnahmen": ["Gefahrenbereich sichern", "Druckabbau und Restenergie berücksichtigen", "Sichere Steuerungsfunktion prüfen", "Einrichtbetrieb bewerten"]
+  },
+  {
+    "id": "M-Q-015",
+    "maschinen": ["foerderband", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Wartungszugang",
+    "frage": "Besteht eine Quetschgefahr bei Wartungs- oder Einstellarbeiten in geöffnetem Zustand?",
+    "normen": ["EN ISO 12100", "EN ISO 14120", "EN ISO 14119"],
+    "lebensphasen": ["Wartung", "Einrichten", "Störung"],
+    "standardMassnahmen": ["Wartungsstellung definieren", "Sichere Stillsetzung und Energieisolierung vorgeben", "Schutz gegen unerwarteten Anlauf umsetzen"]
+  },
+  {
+    "id": "M-Q-016",
+    "maschinen": ["foerderband", "rollenbahn"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Gestell / Verstellung",
+    "frage": "Besteht eine Quetschstelle an höhenverstellbaren Gestellen, Stützen oder Klemmungen?",
+    "normen": ["EN ISO 12100"],
+    "lebensphasen": ["Montage", "Einrichten", "Wartung"],
+    "standardMassnahmen": ["Klemmstellen konstruktiv entschärfen", "Verstellung gegen unbeabsichtigtes Absinken sichern", "Montageanweisung ergänzen"]
+  },
+  {
+    "id": "M-Q-017",
+    "maschinen": ["foerderband", "stahlscharnier"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Gurtwechsel",
+    "frage": "Besteht eine Quetschgefahr beim Gurtwechsel oder beim Entspannen des Fördergurts?",
+    "normen": ["EN ISO 12100", "EN 619"],
+    "lebensphasen": ["Wartung"],
+    "standardMassnahmen": ["Gurtwechsel in Betriebsanleitung beschreiben", "Restspannung berücksichtigen", "Sichere Werkzeuge und Arbeitsschritte definieren"]
+  },
+  {
+    "id": "M-Q-018",
+    "maschinen": ["foerderband", "sondermaschine"],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Quetschen",
+    "bereich": "Demontage / Transport",
+    "frage": "Besteht eine Quetschgefahr beim Transport, Heben oder Aufstellen der Maschine?",
+    "normen": ["EN ISO 12100"],
+    "lebensphasen": ["Transport", "Montage", "Demontage"],
+    "standardMassnahmen": ["Anschlagpunkte definieren", "Schwerpunkt und Gewicht dokumentieren", "Montage- und Transporthinweise ergänzen"]
+  }
+]
