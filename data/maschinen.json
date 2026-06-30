@@ -1,0 +1,9 @@
+[
+  {"id":"foerderband","name":"Förderband","module":"foerderband"},
+  {"id":"rollenbahn","name":"Rollenbahn","module":"rollenbahn"},
+  {"id":"schneckenfoerderer","name":"Schneckenförderer","module":"schneckenfoerderer"},
+  {"id":"portalmix","name":"Portal-Mix / Rührwerk","module":"portalmix"},
+  {"id":"stahlscharnierfoerderer","name":"Stahlscharnierförderer","module":"stahlscharnierfoerderer"},
+  {"id":"vibrorinne","name":"Vibrorinne / Rüttelförderer","module":"vibrorinne"},
+  {"id":"sondermaschine","name":"Sondermaschine","module":"sondermaschine"}
+]
