@@ -1,13 +1,13 @@
-# Maderegger CE Suite
+# Maderegger CE Suite V0.2
 
-Version 0.1 Alpha
-
-## Enthalten
+Enthalten:
 - Dashboard
-- Projektverwaltung
+- Projektdaten-Modul
 - Maschinenarten
-- Normenmanager
-- lokale Projektspeicherung im Browser
+- automatische Normenvorschläge
+- Lebensphasen
+- Ausstattung
+- lokale Projektspeicherung
+- JSON-Export
 
-## Installation auf GitHub Pages
-Alle Dateien in das Repository hochladen. Die Datei `index.html` muss im Hauptverzeichnis liegen.
+Nächster Sprint: Förderband-Gefährdungskatalog mit Ja/Nein-Fragen.
