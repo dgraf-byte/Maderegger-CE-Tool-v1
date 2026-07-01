@@ -1,255 +1,358 @@
 [
   {
-    "id": "FB-M-Q-001",
-    "maschinen": ["foerderband", "stahlscharnier"],
+    "id": "FB-Q-001",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Quetschen",
     "bereich": "Antrieb",
     "frage": "Besteht eine Quetschstelle zwischen Fördergurt und Antriebstrommel?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857", "EN ISO 14120"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Antriebstrommel durch feststehende Schutzhaube abdecken.",
-      "Eingriff in die Einlaufstelle konstruktiv verhindern.",
-      "Sicherheitsabstände prüfen und dokumentieren.",
-      "Reinigung und Wartung nur bei Stillstand zulassen."
+      "Schutzhaube am Antrieb vorsehen",
+      "Sicherheitsabstände nach EN ISO 13857 berücksichtigen",
+      "Zugänglichkeit nur bei Stillstand / Wartung beschreiben"
     ]
   },
   {
-    "id": "FB-M-Q-002",
-    "maschinen": ["foerderband", "stahlscharnier"],
+    "id": "FB-Q-002",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Quetschen",
     "bereich": "Umlenkung",
     "frage": "Besteht eine Quetschstelle zwischen Fördergurt und Umlenktrommel?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857", "EN ISO 14120"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Umlenktrommel durch Schutzabdeckung sichern.",
-      "Einlaufstelle unzugänglich ausführen.",
-      "Schutzabdeckung nur mit Werkzeug lösbar ausführen."
+      "Umlenkbereich abdecken",
+      "Eingriff in Einlaufstelle verhindern",
+      "Warnhinweis in Betriebsanleitung ergänzen"
     ]
   },
   {
-    "id": "FB-M-Q-003",
-    "maschinen": ["foerderband"],
+    "id": "FB-Q-003",
+    "maschinen": [
+      "foerderband"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Quetschen",
     "bereich": "Spannstation",
     "frage": "Besteht eine Quetschstelle an der Spannstation oder Nachspanneinrichtung?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Spannbereich abdecken.",
-      "Einstellarbeiten nur bei Stillstand beschreiben.",
-      "Gefahrstelle in der Betriebsanleitung aufnehmen."
+      "Spannbereich abdecken",
+      "Einstellarbeiten nur bei Stillstand zulassen",
+      "Restgefahr kennzeichnen"
     ]
   },
   {
-    "id": "FB-M-Q-004",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
+    "id": "FB-Q-004",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Quetschen",
     "bereich": "Übergabe",
-    "frage": "Besteht eine Quetschstelle an Übergabestellen zu anderen Förderern oder Maschinen?",
-    "normen": ["EN ISO 12100", "EN 619"],
+    "frage": "Besteht eine Quetschstelle an Übergabestellen zu anderen Förderern?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Übergabebereich konstruktiv entschärfen.",
-      "Füllstücke oder Schutzbleche einsetzen.",
-      "Zugänglichkeit während Betrieb begrenzen."
+      "Übergabebereich konstruktiv entschärfen",
+      "Schutzbleche / Füllstücke einsetzen",
+      "Betriebsanleitung um Übergabegefahren ergänzen"
     ]
   },
   {
-    "id": "FB-M-Q-005",
-    "maschinen": ["foerderband"],
+    "id": "FB-Q-005",
+    "maschinen": [
+      "foerderband"
+    ],
     "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Quetschen",
+    "untergruppe": "Einziehen / Fangen",
     "bereich": "Rücklauf",
-    "frage": "Besteht eine Quetsch- oder Einzugsstelle am rücklaufenden Fördergurt?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857"],
+    "frage": "Besteht eine Einzugsstelle am rücklaufenden Fördergurt?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Rücklaufbereich abdecken oder unzugänglich machen.",
-      "Reinigung nur bei Stillstand zulassen.",
-      "Warnhinweis für Restrisiko ergänzen."
+      "Rücklaufbereich abdecken oder unzugänglich machen",
+      "Eingriff während Betrieb verhindern",
+      "Reinigung nur im Stillstand definieren"
     ]
   },
   {
-    "id": "FB-M-Q-006",
-    "maschinen": ["foerderband"],
+    "id": "FB-Q-006",
+    "maschinen": [
+      "foerderband"
+    ],
     "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Quetschen",
+    "untergruppe": "Einziehen / Fangen",
     "bereich": "Tragrollen",
-    "frage": "Besteht eine Quetsch- oder Einzugsstelle an Tragrollen oder Stützrollen?",
-    "normen": ["EN ISO 12100", "EN 619"],
+    "frage": "Besteht eine Einzugsstelle an Tragrollen oder Stützrollen?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Zugängliche Tragrollen abdecken.",
-      "Seitlichen Eingriff konstruktiv verhindern.",
-      "Wartungs- und Reinigungsanweisung ergänzen."
+      "Tragrollen im zugänglichen Bereich schützen",
+      "Sicherheitsabstände einhalten",
+      "Wartungsanweisung ergänzen"
     ]
   },
   {
-    "id": "FB-M-S-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
+    "id": "FB-Q-007",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Scheren",
-    "bereich": "Klappen / Abdeckungen",
-    "frage": "Bestehen Scherstellen an beweglichen Klappen, Abdeckungen oder Wartungsöffnungen?",
-    "normen": ["EN ISO 12100", "EN ISO 14120"],
+    "bereich": "Seitliche Führung",
+    "frage": "Besteht eine Scherstelle zwischen bewegtem Fördergut und Seitenführung?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Scherstellen konstruktiv vermeiden.",
-      "Bewegliche Abdeckungen sichern.",
-      "Öffnen nur bei Stillstand zulassen."
+      "Seitliche Führung mit ausreichendem Abstand ausführen",
+      "Klemmstellen vermeiden",
+      "Warnhinweise für Störungsbeseitigung ergänzen"
     ]
   },
   {
-    "id": "FB-M-S-002",
-    "maschinen": ["foerderband", "sondermaschine"],
-    "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Scheren",
-    "bereich": "Hubbewegung",
-    "frage": "Bestehen Scherstellen durch Hub-, Senk- oder Verfahrbewegungen?",
-    "normen": ["EN ISO 12100", "EN ISO 13857", "EN ISO 14120"],
-    "standardMassnahmen": [
-      "Gefahrenbereich absichern.",
-      "Bewegung nur bei geschlossener Schutzeinrichtung zulassen.",
-      "Sicherheitsfunktion bewerten und validieren."
-    ]
-  },
-  {
-    "id": "FB-M-E-001",
-    "maschinen": ["foerderband", "stahlscharnier"],
-    "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Einziehen / Fangen",
-    "bereich": "Gurt / Trommel",
-    "frage": "Besteht eine Einzugsstelle zwischen Gurt und Trommel?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 13857"],
-    "standardMassnahmen": [
-      "Einzugsstelle durch Schutzhaube sichern.",
-      "Eingriff in den Einlaufbereich verhindern.",
-      "Gefahrenstelle in Wartungsanweisung beschreiben."
-    ]
-  },
-  {
-    "id": "FB-M-E-002",
-    "maschinen": ["foerderband", "stahlscharnier"],
-    "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Einziehen / Fangen",
-    "bereich": "Ketten / Ritzel",
-    "frage": "Besteht eine Einzugsstelle an Ketten, Ritzeln, Zahnrädern oder Kettenrädern?",
-    "normen": ["EN ISO 12100", "EN 619", "EN ISO 14120"],
-    "standardMassnahmen": [
-      "Ketten- und Ritzelbereich vollständig abdecken.",
-      "Abdeckung nur mit Werkzeug lösbar ausführen.",
-      "Schmier- und Wartungsarbeiten sicher beschreiben."
-    ]
-  },
-  {
-    "id": "FB-M-C-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
+    "id": "FB-Q-008",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Schneiden / Kanten",
     "bereich": "Blechkanten",
-    "frage": "Sind scharfe Blechkanten, Schnittkanten oder Grate vorhanden?",
-    "normen": ["EN ISO 12100"],
+    "frage": "Sind scharfe Kanten oder Schnittstellen an Schutzblechen, Seitenführungen oder Abdeckungen vorhanden?",
+    "normen": [
+      "EN ISO 12100"
+    ],
     "standardMassnahmen": [
-      "Alle zugänglichen Kanten entgraten.",
-      "Kantenschutz oder Radius vorsehen.",
-      "Sicht- und Tastprüfung vor Auslieferung dokumentieren."
+      "Kanten entgraten",
+      "Kantenschutz einsetzen",
+      "Sichtprüfung vor Auslieferung dokumentieren"
     ]
   },
   {
-    "id": "FB-M-A-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
+    "id": "FB-Q-009",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn"
+    ],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Stoßen",
+    "bereich": "Fördergut",
+    "frage": "Kann Fördergut Personen stoßen oder anstoßen?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
+    "standardMassnahmen": [
+      "Zugänglichkeit zum Förderbereich begrenzen",
+      "Übergabe kontrollieren",
+      "Betriebsanleitung ergänzen"
+    ]
+  },
+  {
+    "id": "FB-Q-010",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Auswurf / Herabfallen",
-    "bereich": "Fördergut",
+    "bereich": "Austrag",
     "frage": "Kann Fördergut aus dem Förderer herausfallen oder ausgeworfen werden?",
-    "normen": ["EN ISO 12100", "EN 619"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Seitenführung oder Abdeckung vorsehen.",
-      "Übergabe- und Abwurfbereich prüfen.",
-      "Maximale Beladung und Fördergutgrenzen dokumentieren."
+      "Seitenführung / Abdeckung vorsehen",
+      "Auffangbereiche definieren",
+      "Hinweise zur maximalen Beladung ergänzen"
     ]
   },
   {
-    "id": "FB-M-I-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier"],
-    "gruppe": "Mechanische Gefährdungen",
-    "untergruppe": "Instabilität",
-    "bereich": "Gestell",
-    "frage": "Besteht eine Gefahr durch Kippen, Verrutschen oder unzureichende Standsicherheit?",
-    "normen": ["EN ISO 12100"],
-    "standardMassnahmen": [
-      "Standsicherheit konstruktiv prüfen.",
-      "Befestigungspunkte definieren.",
-      "Montagehinweise in der Dokumentation ergänzen."
-    ]
-  },
-  {
-    "id": "FB-M-W-001",
-    "maschinen": ["foerderband", "stahlscharnier"],
+    "id": "FB-Q-011",
+    "maschinen": [
+      "foerderband"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Wartung / Reinigung",
     "bereich": "Reinigung",
     "frage": "Muss zur Reinigung in Gefahrenbereiche gegriffen werden?",
-    "normen": ["EN ISO 12100", "EN 619"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Reinigung nur bei Stillstand zulassen.",
-      "Energieisolierung vor Reinigung beschreiben.",
-      "Sichere Reinigungszugänge vorsehen."
+      "Reinigung nur bei Stillstand zulassen",
+      "LOTO / Energieisolierung beschreiben",
+      "Reinigungsöffnungen sicher gestalten"
     ]
   },
   {
-    "id": "FB-M-W-002",
-    "maschinen": ["foerderband"],
+    "id": "FB-Q-012",
+    "maschinen": [
+      "foerderband"
+    ],
     "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Wartung / Reinigung",
     "bereich": "Gurtwechsel",
-    "frage": "Entstehen beim Gurtwechsel Quetsch-, Scher- oder Einzugsgefahren?",
-    "normen": ["EN ISO 12100", "EN 619"],
+    "frage": "Entstehen beim Gurtwechsel Quetsch- oder Einzugsgefahren?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Gurtspannung vor Arbeiten lösen.",
-      "Gurtwechselverfahren in der Betriebsanleitung beschreiben.",
-      "Arbeiten nur durch unterwiesenes Personal zulassen."
+      "Gurtwechselverfahren definieren",
+      "Spannung vor Arbeiten lösen",
+      "Betriebsanleitung ergänzen"
     ]
   },
   {
-    "id": "FB-E-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier", "sondermaschine"],
-    "gruppe": "Elektrische Gefährdungen",
-    "untergruppe": "Elektrische Ausrüstung",
-    "bereich": "Schaltschrank / Antrieb",
-    "frage": "Sind elektrische Betriebsmittel oder Leitungen mechanisch beschädigungsgefährdet angeordnet?",
-    "normen": ["EN ISO 12100", "EN 60204-1"],
+    "id": "FB-Q-013",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Instabilität",
+    "bereich": "Gestell",
+    "frage": "Besteht eine Gefahr durch Kippen, Verrutschen oder unzureichende Standsicherheit?",
+    "normen": [
+      "EN ISO 12100"
+    ],
     "standardMassnahmen": [
-      "Leitungen geschützt verlegen.",
-      "Kabelkanäle, Schleppketten oder Schutzschläuche einsetzen.",
-      "Elektrische Prüfung nach EN 60204-1 dokumentieren."
+      "Standsicherheit rechnerisch/konstruktiv prüfen",
+      "Befestigungspunkte definieren",
+      "Montagehinweise ergänzen"
     ]
   },
   {
-    "id": "FB-SF-001",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier", "sondermaschine"],
-    "gruppe": "Sicherheitsfunktionen",
-    "untergruppe": "Not-Halt",
-    "bereich": "Bedienung",
-    "frage": "Ist aufgrund der Maschinenlänge oder Bedienpositionen eine Not-Halt-Einrichtung erforderlich?",
-    "normen": ["EN ISO 12100", "EN ISO 13850", "EN 60204-1"],
+    "id": "FB-Q-014",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn"
+    ],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Störung",
+    "bereich": "Materialstau",
+    "frage": "Entstehen bei Materialstau zusätzliche Gefährdungen für Bediener?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 619"
+    ],
     "standardMassnahmen": [
-      "Not-Halt gut erreichbar anordnen.",
-      "Wirkkreis des Not-Halts definieren.",
-      "Funktion prüfen und dokumentieren."
+      "Störungsbeseitigung nur bei Stillstand beschreiben",
+      "Zugänge sichern",
+      "Warnhinweise ergänzen"
     ]
   },
   {
-    "id": "FB-SF-002",
-    "maschinen": ["foerderband", "rollenbahn", "stahlscharnier", "sondermaschine"],
-    "gruppe": "Sicherheitsfunktionen",
+    "id": "FB-Q-015",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
+    "gruppe": "Mechanische Gefährdungen",
+    "untergruppe": "Schutzeinrichtungen",
+    "bereich": "Abdeckungen",
+    "frage": "Können Schutzeinrichtungen ohne Werkzeug entfernt werden?",
+    "normen": [
+      "EN ISO 12100",
+      "EN ISO 14120",
+      "EN 619"
+    ],
+    "standardMassnahmen": [
+      "Befestigung mit Werkzeug erforderlich ausführen",
+      "Verlustsichere Befestigung prüfen",
+      "Wartungsvorgaben ergänzen"
+    ]
+  },
+  {
+    "id": "FB-Q-016",
+    "maschinen": [
+      "foerderband",
+      "stahlscharnier"
+    ],
+    "gruppe": "Mechanische Gefährdungen",
     "untergruppe": "Wiederanlauf",
     "bereich": "Steuerung",
     "frage": "Kann es nach Energieausfall oder Störung zu unerwartetem Wiederanlauf kommen?",
-    "normen": ["EN ISO 12100", "EN 60204-1", "EN ISO 13849-1"],
+    "normen": [
+      "EN ISO 12100",
+      "EN 60204-1",
+      "EN ISO 13849-1"
+    ],
     "standardMassnahmen": [
-      "Unerwarteten Wiederanlauf steuerungstechnisch verhindern.",
-      "Bewusste Startfreigabe nach Störung vorsehen.",
-      "Reset- und Startbedingungen dokumentieren."
+      "Unerwarteten Wiederanlauf steuerungstechnisch verhindern",
+      "Reset-/Start-Bedingungen definieren",
+      "Validierung dokumentieren"
+    ]
+  },
+  {
+    "id": "FB-Q-017",
+    "maschinen": [
+      "foerderband"
+    ],
+    "gruppe": "Elektrische Gefährdungen",
+    "untergruppe": "Elektrische Ausrüstung",
+    "bereich": "Schaltschrank / Antrieb",
+    "frage": "Sind elektrische Betriebsmittel oder Leitungen beschädigungsgefährdet angeordnet?",
+    "normen": [
+      "EN ISO 12100",
+      "EN 60204-1"
+    ],
+    "standardMassnahmen": [
+      "Leitungsführung geschützt ausführen",
+      "Kabel vor mechanischer Beschädigung schützen",
+      "Prüfung nach EN 60204-1 dokumentieren"
+    ]
+  },
+  {
+    "id": "FB-Q-018",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier"
+    ],
+    "gruppe": "Sicherheitsfunktionen",
+    "untergruppe": "Not-Halt",
+    "bereich": "Bedienung",
+    "frage": "Ist eine Not-Halt-Einrichtung aufgrund der Maschinenlänge oder Bedienpositionen erforderlich?",
+    "normen": [
+      "EN ISO 12100",
+      "EN ISO 13850",
+      "EN 60204-1"
+    ],
+    "standardMassnahmen": [
+      "Not-Halt gut erreichbar anordnen",
+      "Wirkkreis definieren",
+      "Funktion prüfen und dokumentieren"
     ]
   }
 ]
