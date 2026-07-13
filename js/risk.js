@@ -1,14 +1,267 @@
-import{qs,qsa,escapeHtml,toast}from'./ui.js';import{activeProject}from'./storage.js';
-let ctx=null;let activeGroup=null;let activeSub=null;let filter='all';let allOpen=false;
-export function initRisk(options){ctx=options;qs('#riskTree').addEventListener('click',onTreeClick);qs('#riskList').addEventListener('click',onRiskClick);qs('#riskList').addEventListener('input',onRiskInput);qsa('[data-filter]').forEach(b=>b.onclick=()=>{filter=b.dataset.filter;qsa('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));renderRisk()});qs('#expandAllBtn').onclick=()=>{allOpen=!allOpen;qs('#expandAllBtn').textContent=allOpen?'Alle schließen':'Alle öffnen';renderTree()};qs('#saveRiskBottomBtn').onclick=()=>{ctx.onChange();toast('Risikoanalyse gespeichert')};renderRisk()}
-export function renderRisk(){const p=activeProject(ctx.state);if(!p){qs('#riskTree').innerHTML='<div class="empty-state">Zuerst ein Projekt anlegen.</div>';qs('#riskList').innerHTML='<div class="empty-state">Keine aktive Risikoanalyse.</div>';updateSummary([],null);return}p.risk??={};renderTree();const relevant=getRelevant(p);let shown=relevant.filter(d=>(!activeGroup||d.gruppe===activeGroup)&&(!activeSub||d.untergruppe===activeSub));if(filter==='open')shown=shown.filter(d=>!p.risk[d.id]?.answer);if(filter==='yes')shown=shown.filter(d=>p.risk[d.id]?.answer==='yes');qs('#activeRiskPath').textContent=activeSub?`${activeGroup} › ${activeSub}`:(activeGroup||'Alle Gefährdungen');qs('#riskList').innerHTML=shown.length?shown.map(d=>card(d,p.risk[d.id]||{})).join(''):'<div class="empty-state">Keine Fragen in diesem Filter.</div>';updateSummary(relevant,p)}
-function getRelevant(p){return ctx.dangers.filter(d=>!p.machineType||d.maschinen.includes(p.machineType))}
-function grouped(p){const out={};for(const d of getRelevant(p)){out[d.gruppe]??={};out[d.gruppe][d.untergruppe]??=[];out[d.gruppe][d.untergruppe].push(d)}return out}
-function renderTree(){const p=activeProject(ctx.state);if(!p)return;const groups=grouped(p);qs('#riskTree').innerHTML=Object.entries(groups).map(([group,subs])=>{const items=Object.values(subs).flat();const answered=items.filter(d=>p.risk[d.id]?.answer).length;const yes=items.filter(d=>p.risk[d.id]?.answer==='yes').length;const open=allOpen||activeGroup===group;return `<div class="tree-group ${open?'open':''}"><button class="tree-group-btn ${activeGroup===group&&!activeSub?'active':''}" data-group="${escapeHtml(group)}"><div class="tree-group-main"><span>${open?'▼':'▶'} ${escapeHtml(group)}</span><span>${answered}/${items.length}</span></div><div class="tree-group-meta">${yes} Ja · ${items.length-answered} offen</div><div class="tree-progress"><span style="width:${items.length?answered/items.length*100:0}%"></span></div></button><div class="tree-children">${Object.entries(subs).map(([sub,list])=>{const a=list.filter(d=>p.risk[d.id]?.answer).length;const y=list.filter(d=>p.risk[d.id]?.answer==='yes').length;return `<button class="tree-sub-btn ${activeSub===sub?'active':''}" data-group="${escapeHtml(group)}" data-sub="${escapeHtml(sub)}"><div class="tree-sub-main"><span>${escapeHtml(sub)}</span><span>${a}/${list.length}</span></div><div class="tree-sub-meta">${y} Ja · ${list.length-a} offen</div></button>`}).join('')}</div></div>`}).join('')}
-function onTreeClick(e){const sub=e.target.closest('[data-sub]');if(sub){activeGroup=sub.dataset.group;activeSub=sub.dataset.sub;renderRisk();return}const group=e.target.closest('[data-group]');if(group){const same=activeGroup===group.dataset.group&&!activeSub;activeGroup=same?null:group.dataset.group;activeSub=null;renderRisk()}}
-function onRiskClick(e){const b=e.target.closest('[data-answer]');if(!b)return;const p=activeProject(ctx.state);const id=b.dataset.id;p.risk[id]??={};p.risk[id].answer=b.dataset.answer;p.risk[id].updatedAt=new Date().toISOString();ctx.onChange();renderRisk()}
-function onRiskInput(e){const field=e.target.closest('[data-risk-field]');if(!field)return;const p=activeProject(ctx.state);const r=p.risk[field.dataset.id]??={};r[field.dataset.riskField]=field.value;r.updatedAt=new Date().toISOString();ctx.onChange({silent:true});updateRiskBadge(field.dataset.id,r)}
-function card(d,r){const s=Number(r.severity||0),f=Number(r.frequency||0),p=Number(r.possibility||0),score=s*f*p;const badge=score?riskBadge(score):'';return `<article class="risk-card status-${r.answer||'open'}" data-risk-id="${d.id}"><div class="risk-question"><div class="risk-question-head"><div><div class="risk-code">${escapeHtml(d.id)} · ${escapeHtml(d.bereich||'')}</div><h3>${escapeHtml(d.frage)}</h3><div class="risk-context">${escapeHtml(d.gruppe)} › ${escapeHtml(d.untergruppe)}</div></div><div class="answer-buttons"><button type="button" class="answer-btn yes ${r.answer==='yes'?'active':''}" data-answer="yes" data-id="${d.id}">Ja</button><button type="button" class="answer-btn no ${r.answer==='no'?'active':''}" data-answer="no" data-id="${d.id}">Nein</button></div></div></div><div class="risk-details"><div class="detail-grid"><label class="wide">Beschreibung der Gefährdung<textarea rows="3" data-risk-field="description" data-id="${d.id}">${escapeHtml(r.description||'')}</textarea></label><label>Schwere S<select data-risk-field="severity" data-id="${d.id}"><option value="">–</option><option value="1" ${r.severity==='1'?'selected':''}>S1 – leicht/reversibel</option><option value="2" ${r.severity==='2'?'selected':''}>S2 – schwer/irreversibel</option></select></label><label>Häufigkeit F<select data-risk-field="frequency" data-id="${d.id}"><option value="">–</option><option value="1" ${r.frequency==='1'?'selected':''}>F1 – selten/kurz</option><option value="2" ${r.frequency==='2'?'selected':''}>F2 – häufig/lang</option></select></label><label>Vermeidbarkeit P<select data-risk-field="possibility" data-id="${d.id}"><option value="">–</option><option value="1" ${r.possibility==='1'?'selected':''}>P1 – möglich</option><option value="2" ${r.possibility==='2'?'selected':''}>P2 – kaum möglich</option></select></label><div class="wide"><strong>Risikoeinstufung: </strong><span id="badge-${d.id}">${badge}</span></div><div class="wide standard-measures"><strong>Vorgeschlagene Maßnahmen</strong><ul>${(d.standardMassnahmen||[]).map(m=>`<li>${escapeHtml(m)}</li>`).join('')}</ul></div><label class="wide">Gewählte Maßnahme<textarea rows="3" data-risk-field="measure" data-id="${d.id}">${escapeHtml(r.measure||'')}</textarea></label><label class="wide">Restrisiko / Benutzerinformation<textarea rows="2" data-risk-field="residualRisk" data-id="${d.id}">${escapeHtml(r.residualRisk||'')}</textarea></label><div class="wide muted"><strong>Normen:</strong> ${escapeHtml((d.normen||[]).join(' · '))}<br><strong>Lebensphasen:</strong> ${escapeHtml((d.lebensphasen||[]).join(' · '))}</div></div></div></article>`}
-function riskBadge(score){const cls=score>=6?'high':score>=3?'medium':'low';const text=score>=6?'hoch':score>=3?'mittel':'niedrig';return `<span class="risk-badge ${cls}">${text} · ${score}</span>`}
-function updateRiskBadge(id,r){const el=qs(`#badge-${CSS.escape(id)}`);if(!el)return;const score=Number(r.severity||0)*Number(r.frequency||0)*Number(r.possibility||0);el.innerHTML=score?riskBadge(score):''}
-function updateSummary(relevant,p){const answered=p?relevant.filter(d=>p.risk[d.id]?.answer).length:0;const yes=p?relevant.filter(d=>p.risk[d.id]?.answer==='yes').length:0;qs('#riskAnswered').textContent=`${answered} / ${relevant.length} beantwortet`;qs('#riskYesCount').textContent=`${yes} Gefährdungen vorhanden`}
+import{qs,qsa,escapeHtml,toast}from'./ui.js';
+import{activeProject}from'./storage.js';
+
+let ctx=null;
+let activeGroup=null;
+let activeSub=null;
+let filter='all';
+let allOpen=false;
+
+export function initRisk(options){
+  ctx=options;
+  qs('#riskTree').addEventListener('click',onTreeClick);
+  qs('#riskList').addEventListener('click',onRiskClick);
+  qs('#riskList').addEventListener('input',onRiskInput);
+  qs('#riskList').addEventListener('change',onRiskChange);
+  qsa('[data-filter]').forEach(button=>{
+    button.onclick=()=>{
+      filter=button.dataset.filter;
+      qsa('[data-filter]').forEach(x=>x.classList.toggle('active',x===button));
+      renderRisk();
+    };
+  });
+  qs('#expandAllBtn').onclick=()=>{
+    allOpen=!allOpen;
+    qs('#expandAllBtn').textContent=allOpen?'Alle schließen':'Alle öffnen';
+    renderTree();
+  };
+  qs('#saveRiskBottomBtn').onclick=()=>{
+    ctx.onChange();
+    toast('Risikoanalyse gespeichert');
+  };
+  renderRisk();
+}
+
+export function renderRisk(){
+  const project=activeProject(ctx.state);
+  if(!project){
+    qs('#riskTree').innerHTML='<div class="empty-state">Zuerst ein Projekt anlegen.</div>';
+    qs('#riskList').innerHTML='<div class="empty-state">Keine aktive Risikoanalyse.</div>';
+    updateSummary([],null);
+    return;
+  }
+  project.risk??={};
+  renderTree();
+  const relevant=getRelevant(project);
+  let shown=relevant.filter(item=>(!activeGroup||item.gruppe===activeGroup)&&(!activeSub||item.untergruppe===activeSub));
+  if(filter==='open')shown=shown.filter(item=>!project.risk[item.id]?.answer);
+  if(filter==='yes')shown=shown.filter(item=>project.risk[item.id]?.answer==='yes');
+  if(filter==='incomplete')shown=shown.filter(item=>!isComplete(project.risk[item.id]||{}));
+  qs('#activeRiskPath').textContent=activeSub?`${activeGroup} › ${activeSub}`:(activeGroup||'Alle Gefährdungen');
+  qs('#riskList').innerHTML=shown.length?shown.map(item=>card(item,project.risk[item.id]||{})).join(''):'<div class="empty-state">Keine Fragen in diesem Filter.</div>';
+  updateSummary(relevant,project);
+}
+
+function getRelevant(project){
+  return ctx.dangers.filter(item=>!project.machineType||item.maschinen.includes(project.machineType));
+}
+
+function grouped(project){
+  const output={};
+  for(const item of getRelevant(project)){
+    output[item.gruppe]??={};
+    output[item.gruppe][item.untergruppe]??=[];
+    output[item.gruppe][item.untergruppe].push(item);
+  }
+  return output;
+}
+
+function renderTree(){
+  const project=activeProject(ctx.state);
+  if(!project)return;
+  const groups=grouped(project);
+  qs('#riskTree').innerHTML=Object.entries(groups).map(([group,subs])=>{
+    const items=Object.values(subs).flat();
+    const answered=items.filter(item=>project.risk[item.id]?.answer).length;
+    const yes=items.filter(item=>project.risk[item.id]?.answer==='yes').length;
+    const complete=items.filter(item=>isComplete(project.risk[item.id]||{})).length;
+    const open=allOpen||activeGroup===group;
+    return `<div class="tree-group ${open?'open':''}">
+      <button class="tree-group-btn ${activeGroup===group&&!activeSub?'active':''}" data-group="${escapeHtml(group)}">
+        <div class="tree-group-main"><span>${open?'▼':'▶'} ${escapeHtml(group)}</span><span>${complete}/${items.length}</span></div>
+        <div class="tree-group-meta">${answered} beantwortet · ${yes} Ja · ${items.length-complete} unvollständig</div>
+        <div class="tree-progress"><span style="width:${items.length?complete/items.length*100:0}%"></span></div>
+      </button>
+      <div class="tree-children">${Object.entries(subs).map(([sub,list])=>{
+        const answeredSub=list.filter(item=>project.risk[item.id]?.answer).length;
+        const yesSub=list.filter(item=>project.risk[item.id]?.answer==='yes').length;
+        const completeSub=list.filter(item=>isComplete(project.risk[item.id]||{})).length;
+        const state=completeSub===list.length?'complete':answeredSub?'partial':'open';
+        return `<button class="tree-sub-btn ${activeSub===sub?'active':''} state-${state}" data-group="${escapeHtml(group)}" data-sub="${escapeHtml(sub)}">
+          <div class="tree-sub-main"><span><span class="tree-state-dot"></span>${escapeHtml(sub)}</span><span>${completeSub}/${list.length}</span></div>
+          <div class="tree-sub-meta">${yesSub} Ja · ${list.length-completeSub} unvollständig</div>
+        </button>`;
+      }).join('')}</div>
+    </div>`;
+  }).join('');
+}
+
+function onTreeClick(event){
+  const sub=event.target.closest('[data-sub]');
+  if(sub){
+    activeGroup=sub.dataset.group;
+    activeSub=sub.dataset.sub;
+    renderRisk();
+    return;
+  }
+  const group=event.target.closest('[data-group]');
+  if(group){
+    const same=activeGroup===group.dataset.group&&!activeSub;
+    activeGroup=same?null:group.dataset.group;
+    activeSub=null;
+    renderRisk();
+  }
+}
+
+function onRiskClick(event){
+  const answerButton=event.target.closest('[data-answer]');
+  if(answerButton){
+    const project=activeProject(ctx.state);
+    const id=answerButton.dataset.id;
+    project.risk[id]??={};
+    project.risk[id].answer=answerButton.dataset.answer;
+    project.risk[id].updatedAt=new Date().toISOString();
+    ctx.onChange();
+    renderRisk();
+    return;
+  }
+
+  const applyButton=event.target.closest('[data-apply-measures]');
+  if(applyButton){
+    const project=activeProject(ctx.state);
+    const id=applyButton.dataset.applyMeasures;
+    const risk=project.risk[id]??={};
+    const selected=Array.isArray(risk.selectedMeasures)?risk.selectedMeasures:[];
+    if(!selected.length){
+      toast('Bitte zuerst mindestens eine Maßnahme auswählen');
+      return;
+    }
+    const existing=(risk.measure||'').trim();
+    const block=selected.map(item=>`• ${item}`).join('\n');
+    risk.measure=existing?`${existing}\n${block}`:block;
+    risk.updatedAt=new Date().toISOString();
+    ctx.onChange();
+    renderRisk();
+    toast('Ausgewählte Maßnahmen übernommen');
+  }
+}
+
+function onRiskInput(event){
+  const field=event.target.closest('[data-risk-field]');
+  if(!field)return;
+  const project=activeProject(ctx.state);
+  const risk=project.risk[field.dataset.id]??={};
+  risk[field.dataset.riskField]=field.value;
+  risk.updatedAt=new Date().toISOString();
+  ctx.onChange({silent:true});
+  refreshCardState(field.dataset.id,risk);
+}
+
+function onRiskChange(event){
+  const checkbox=event.target.closest('[data-measure-option]');
+  if(!checkbox)return;
+  const project=activeProject(ctx.state);
+  const id=checkbox.dataset.id;
+  const risk=project.risk[id]??={};
+  const checked=qsa(`[data-measure-option][data-id="${CSS.escape(id)}"]:checked`).map(item=>item.value);
+  risk.selectedMeasures=checked;
+  risk.updatedAt=new Date().toISOString();
+  ctx.onChange({silent:true});
+  refreshCardState(id,risk);
+}
+
+function card(item,risk){
+  const score=calculateScore(risk);
+  const status=cardStatus(risk);
+  const badge=score?riskBadge(score):'<span class="risk-badge neutral">noch nicht bewertet</span>';
+  const completionLabel=status==='complete'?'Vollständig':status==='incomplete'?'Bewertung offen':risk.answer==='no'?'Nicht vorhanden':'Offen';
+  const selected=new Set(Array.isArray(risk.selectedMeasures)?risk.selectedMeasures:[]);
+  return `<article class="risk-card status-${status}" data-risk-id="${item.id}">
+    <div class="risk-question">
+      <div class="risk-question-head">
+        <div>
+          <div class="risk-code">${escapeHtml(item.id)} · ${escapeHtml(item.bereich||'')}</div>
+          <h3>${escapeHtml(item.frage)}</h3>
+          <div class="risk-context">${escapeHtml(item.gruppe)} › ${escapeHtml(item.untergruppe)}</div>
+        </div>
+        <div class="risk-card-actions">
+          <span class="completion-badge ${status}">${completionLabel}</span>
+          <div class="answer-buttons">
+            <button type="button" class="answer-btn yes ${risk.answer==='yes'?'active':''}" data-answer="yes" data-id="${item.id}">Ja</button>
+            <button type="button" class="answer-btn no ${risk.answer==='no'?'active':''}" data-answer="no" data-id="${item.id}">Nein</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="risk-details">
+      <div class="detail-grid">
+        <label class="wide">Beschreibung der konkreten Gefährdung<textarea rows="3" data-risk-field="description" data-id="${item.id}" placeholder="Gefahrstelle, betroffene Person und mögliche Folge beschreiben …">${escapeHtml(risk.description||'')}</textarea></label>
+        <label>Schwere S<select data-risk-field="severity" data-id="${item.id}"><option value="">– auswählen –</option><option value="1" ${risk.severity==='1'?'selected':''}>S1 – leicht / reversibel</option><option value="2" ${risk.severity==='2'?'selected':''}>S2 – schwer / irreversibel</option></select></label>
+        <label>Häufigkeit F<select data-risk-field="frequency" data-id="${item.id}"><option value="">– auswählen –</option><option value="1" ${risk.frequency==='1'?'selected':''}>F1 – selten / kurz</option><option value="2" ${risk.frequency==='2'?'selected':''}>F2 – häufig / lang</option></select></label>
+        <label>Vermeidbarkeit P<select data-risk-field="possibility" data-id="${item.id}"><option value="">– auswählen –</option><option value="1" ${risk.possibility==='1'?'selected':''}>P1 – möglich</option><option value="2" ${risk.possibility==='2'?'selected':''}>P2 – kaum möglich</option></select></label>
+        <div class="wide risk-rating-row"><strong>Risikoeinstufung vor Maßnahme</strong><span id="badge-${item.id}">${badge}</span></div>
+        <div class="wide standard-measures">
+          <div class="measure-head"><div><strong>Vorgeschlagene Maßnahmen</strong><div class="muted">Auswählen und anschließend übernehmen. Eigene Ergänzungen bleiben möglich.</div></div><button type="button" class="btn small" data-apply-measures="${item.id}">Ausgewählte übernehmen</button></div>
+          <div class="measure-options">${(item.standardMassnahmen||[]).map((measure,index)=>`<label class="measure-option"><input type="checkbox" data-measure-option data-id="${item.id}" value="${escapeHtml(measure)}" ${selected.has(measure)?'checked':''}><span>${escapeHtml(measure)}</span></label>`).join('')}</div>
+        </div>
+        <label class="wide">Gewählte technische und organisatorische Maßnahmen<textarea rows="4" data-risk-field="measure" data-id="${item.id}" placeholder="Umgesetzte Maßnahmen dokumentieren …">${escapeHtml(risk.measure||'')}</textarea></label>
+        <label class="wide">Restrisiko / Benutzerinformation<textarea rows="3" data-risk-field="residualRisk" data-id="${item.id}" placeholder="Verbleibendes Restrisiko und Hinweise für Betriebsanleitung …">${escapeHtml(risk.residualRisk||'')}</textarea></label>
+        <div class="wide reference-box"><div><strong>Normenbezug</strong><div class="norm-chips">${(item.normen||[]).map(norm=>`<span>${escapeHtml(norm)}</span>`).join('')}</div></div><div><strong>Relevante Lebensphasen</strong><div class="life-chips">${(item.lebensphasen||[]).map(phase=>`<span>${escapeHtml(phase)}</span>`).join('')}</div></div></div>
+      </div>
+    </div>
+  </article>`;
+}
+
+function calculateScore(risk){
+  return Number(risk.severity||0)*Number(risk.frequency||0)*Number(risk.possibility||0);
+}
+
+function isComplete(risk){
+  if(risk.answer==='no')return true;
+  if(risk.answer!=='yes')return false;
+  const hasAssessment=Boolean(risk.severity&&risk.frequency&&risk.possibility);
+  const hasMeasure=Boolean((risk.measure||'').trim()||(Array.isArray(risk.selectedMeasures)&&risk.selectedMeasures.length));
+  return hasAssessment&&hasMeasure;
+}
+
+function cardStatus(risk){
+  if(risk.answer==='no')return 'no';
+  if(risk.answer==='yes')return isComplete(risk)?'complete':'incomplete';
+  return 'open';
+}
+
+function riskBadge(score){
+  const cls=score>=6?'high':score>=3?'medium':'low';
+  const text=score>=6?'hoch':score>=3?'mittel':'niedrig';
+  return `<span class="risk-badge ${cls}">${text} · Risikowert ${score}</span>`;
+}
+
+function refreshCardState(id,risk){
+  const cardElement=qs(`[data-risk-id="${CSS.escape(id)}"]`);
+  if(!cardElement)return;
+  const status=cardStatus(risk);
+  cardElement.className=`risk-card status-${status}`;
+  const completion=cardElement.querySelector('.completion-badge');
+  if(completion){
+    completion.className=`completion-badge ${status}`;
+    completion.textContent=status==='complete'?'Vollständig':status==='incomplete'?'Bewertung offen':risk.answer==='no'?'Nicht vorhanden':'Offen';
+  }
+  const badge=qs(`#badge-${CSS.escape(id)}`);
+  if(badge){
+    const score=calculateScore(risk);
+    badge.innerHTML=score?riskBadge(score):'<span class="risk-badge neutral">noch nicht bewertet</span>';
+  }
+  renderTree();
+  const project=activeProject(ctx.state);
+  updateSummary(getRelevant(project),project);
+}
+
+function updateSummary(relevant,project){
+  const answered=project?relevant.filter(item=>project.risk[item.id]?.answer).length:0;
+  const yes=project?relevant.filter(item=>project.risk[item.id]?.answer==='yes').length:0;
+  const complete=project?relevant.filter(item=>isComplete(project.risk[item.id]||{})).length:0;
+  qs('#riskAnswered').textContent=`${answered} / ${relevant.length} beantwortet`;
+  qs('#riskYesCount').textContent=`${yes} Gefährdungen vorhanden`;
+  const completeElement=qs('#riskCompleteCount');
+  if(completeElement)completeElement.textContent=`${complete} vollständig abgeschlossen`;
+}
