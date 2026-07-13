@@ -1,13 +1,13 @@
-# Maderegger CE Suite – Sprint 6.2
+# Maderegger CE Suite – Sprint 6.3
 
-## Inhalt
-- Dashboard und lokale Projektverwaltung
-- Projektdaten, Ausstattung und Lebensphasen
-- Gefährdungsbaum nach Gruppe und Untergruppe
-- Fortschritt je Gruppe
-- Ja/Nein-Bewertung
-- Detailbewertung mit S/F/P, Maßnahmen und Restrisiko
-- JSON-, CSV-, Word- und Druckexport
+Statische Web-App für GitHub Pages. Sämtliche Projektdaten werden lokal im Browser gespeichert.
 
-## Installation
-Alle Dateien und Ordner in das Root-Verzeichnis des GitHub-Pages-Repositories kopieren.
+## Sprint 6.3
+- intelligente Vollständigkeitsprüfung
+- Statusampel pro Gefährdung
+- auswählbare und übernehmbare Maßnahmenvorschläge
+- Fortschritt nach vollständig abgeschlossenen Fragen
+- Filter für unvollständige Bewertungen
+
+## Veröffentlichung
+Den gesamten Inhalt dieses Ordners in das Root-Verzeichnis des GitHub-Pages-Repositories kopieren, committen und pushen.

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2f3234" />
-  <title>Maderegger CE Suite – Sprint 6.2</title>
+  <title>Maderegger CE Suite – Sprint 6.3</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite · Sprint 6.2</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · Sprint 6.3</span></div>
       </div>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
@@ -85,7 +85,7 @@
       <section id="risk" class="view">
         <div class="panel risk-head">
           <div><h2>Risikoanalyse</h2><p>Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
-          <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span></div>
+          <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span><span id="riskCompleteCount">0 vollständig abgeschlossen</span></div>
         </div>
         <div class="risk-workspace">
           <aside class="risk-tree-panel panel">
@@ -98,7 +98,7 @@
               <div class="toolbar-actions">
                 <button type="button" data-filter="all" class="btn small active">Alle</button>
                 <button type="button" data-filter="open" class="btn small">Nur offene</button>
-                <button type="button" data-filter="yes" class="btn small">Nur Ja</button>
+                <button type="button" data-filter="yes" class="btn small">Nur Ja</button><button type="button" data-filter="incomplete" class="btn small">Unvollständig</button>
               </div>
             </div>
             <div id="riskList" class="risk-list"></div>

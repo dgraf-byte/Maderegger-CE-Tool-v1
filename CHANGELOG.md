@@ -1,10 +1,16 @@
 # Changelog
 
+## Sprint 6.3
+- Automatische Statusampel je Gefährdung
+- Vollständigkeitsprüfung für Ja/Nein und Detailbewertung
+- Filter „Unvollständig“
+- Auswählbare Maßnahmenvorschläge
+- Übernahme ausgewählter Maßnahmen in die Dokumentation
+- Normen und Lebensphasen als übersichtliche Referenz-Chips
+- Fortschritt im Gefährdungsbaum basiert nun auf vollständig abgeschlossenen Fragen
+
 ## Sprint 6.2
-- Modulare JavaScript-Struktur eingeführt
 - Gefährdungsbaum mit Gruppen und Untergruppen
-- Fortschritt, Anzahl Ja und offene Fragen je Gruppe
-- Filter Alle / Nur offene / Nur Ja
+- Ja/Nein-Bewertung und Detailfelder
 - S/F/P-Risikoeinstufung
-- Speichern-Button am Ende der Projektdaten und Risikoanalyse
-- Mobile Darstellung verbessert
+- Lokale Projektspeicherung und Exporte
