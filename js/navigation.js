@@ -1,1 +1,4 @@
-
+import{qsa,qs}from'./ui.js';
+const titles={dashboard:['Dashboard','CE- und Risikoanalyse für Fördertechnik'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikoanalyse','Gefährdungen systematisch durchspielen'],norms:['Normen','Automatisch vorgeschlagene A-, B- und C-Normen'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
+export function initNavigation(onView){qsa('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>showView(btn.dataset.view,onView)));qs('#menuBtn').addEventListener('click',()=>qs('#sidebar').classList.toggle('open'))}
+export function showView(view,onView){qsa('.view').forEach(v=>v.classList.toggle('active',v.id===view));qsa('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));qs('#pageTitle').textContent=titles[view][0];qs('#pageSubtitle').textContent=titles[view][1];qs('#sidebar').classList.remove('open');onView?.(view)}
