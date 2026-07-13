@@ -1,9 +1,9 @@
 [
-  {"id":"foerderband","name":"Förderband"},
-  {"id":"rollenbahn","name":"Rollenbahn"},
-  {"id":"schneckenfoerderer","name":"Schneckenförderer"},
-  {"id":"portalmix","name":"Portal-Mix"},
-  {"id":"stahlscharnier","name":"Stahlscharnierförderer"},
-  {"id":"vibrorinne","name":"Vibrorinne"},
-  {"id":"sondermaschine","name":"Sondermaschine"}
+  {"id":"foerderband","name":"Förderband","normen":["EN ISO 12100","EN 619","EN 60204-1","EN ISO 13850","EN ISO 13857","EN ISO 14120","EN ISO 14119","EN ISO 13849-1"]},
+  {"id":"rollenbahn","name":"Rollenbahn","normen":["EN ISO 12100","EN 619","EN 60204-1","EN ISO 13850"]},
+  {"id":"stahlscharnier","name":"Stahlscharnierförderer","normen":["EN ISO 12100","EN 619","EN 60204-1","EN ISO 13850"]},
+  {"id":"schneckenfoerderer","name":"Schneckenförderer","normen":["EN ISO 12100","EN 618","EN 60204-1"]},
+  {"id":"portal-mix","name":"Portal-Mix","normen":["EN ISO 12100","EN 60204-1","EN ISO 13849-1"]},
+  {"id":"vibrorinne","name":"Vibrorinne","normen":["EN ISO 12100","EN 618","EN 60204-1"]},
+  {"id":"sondermaschine","name":"Sondermaschine","normen":["EN ISO 12100","EN 60204-1","EN ISO 13849-1","EN ISO 13850"]}
 ]

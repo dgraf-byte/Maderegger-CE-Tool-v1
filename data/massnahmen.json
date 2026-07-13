@@ -1,1 +1,7 @@
-
+[
+  {"id":"guard-fixed","name":"Feststehende trennende Schutzeinrichtung"},
+  {"id":"distance","name":"Sicherheitsabstände einhalten"},
+  {"id":"lockout","name":"Energieisolierung / Lockout-Tagout"},
+  {"id":"instruction","name":"Betriebsanleitung und Unterweisung"},
+  {"id":"interlock","name":"Verriegelte Schutzeinrichtung"}
+]
