@@ -3,29 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Maderegger CE Suite V0.5</title>
+  <meta name="theme-color" content="#2f3234" />
+  <title>Maderegger CE Suite – Sprint 6.2</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite V0.5</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · Sprint 6.2</span></div>
       </div>
-      <nav>
+      <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
         <button class="nav-btn" data-view="project">Projektdaten</button>
         <button class="nav-btn" data-view="risk">Risikoanalyse</button>
         <button class="nav-btn" data-view="norms">Normen</button>
         <button class="nav-btn" data-view="documents">Dokumente</button>
       </nav>
-      <div class="sidebar-note">Daten werden lokal im Browser gespeichert.</div>
+      <div class="sidebar-note">Daten werden lokal in diesem Browser gespeichert.</div>
     </aside>
 
     <main class="content">
       <header class="topbar">
-        <div>
+        <button id="menuBtn" class="icon-btn mobile-only" type="button" aria-label="Menü öffnen">☰</button>
+        <div class="topbar-title">
           <h1 id="pageTitle">Dashboard</h1>
           <p id="pageSubtitle">CE- und Risikoanalyse für Fördertechnik</p>
         </div>
@@ -38,11 +40,11 @@
       <section id="dashboard" class="view active">
         <div class="grid cards">
           <article class="card"><span class="label">Aktuelles Projekt</span><h2 id="dashProject">Kein Projekt gewählt</h2><p id="dashCustomer">Bitte Projektdaten erfassen.</p></article>
-          <article class="card"><span class="label">Fortschritt</span><h2 id="dashProgress">0%</h2><div class="progress"><span id="progressBar"></span></div></article>
+          <article class="card"><span class="label">Gesamtfortschritt</span><h2 id="dashProgress">0%</h2><div class="progress"><span id="progressBar"></span></div></article>
           <article class="card"><span class="label">Risikoanalyse</span><h2 id="dashRisk">0 / 0</h2><p id="dashRiskInfo">Noch keine Gefährdungen bewertet.</p></article>
         </div>
         <div class="panel">
-          <h2>Projektliste</h2>
+          <div class="panel-head"><h2>Projektliste</h2><span class="muted">Lokal gespeicherte Projekte</span></div>
           <div id="projectList" class="project-list"></div>
         </div>
       </section>
@@ -73,55 +75,44 @@
 
           <h2>Ausstattung</h2>
           <div id="equipmentList" class="check-grid"></div>
-
           <h2>Lebensphasen</h2>
           <div id="lifePhaseList" class="check-grid"></div>
 
-          <div class="form-actions bottom-save">
-            <button type="button" id="saveProjectBottomBtn" class="btn primary">Projekt speichern</button>
-          </div>
+          <div class="form-actions bottom-save"><button type="button" id="saveProjectBottomBtn" class="btn primary">Projekt speichern</button></div>
         </form>
       </section>
 
       <section id="risk" class="view">
         <div class="panel risk-head">
-          <div>
-            <h2>Risikoanalyse</h2>
-            <p>Jede Gefährdung mit <strong>Ja</strong> oder <strong>Nein</strong> bewerten. Bei „Ja“ öffnet sich die Detailbewertung.</p>
-          </div>
-          <div class="risk-summary">
-            <strong id="riskAnswered">0 / 0 beantwortet</strong>
-            <span id="riskYesCount">0 Gefährdungen vorhanden</span>
-          </div>
+          <div><h2>Risikoanalyse</h2><p>Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
+          <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span></div>
         </div>
-        <div class="risk-toolbar panel">
-          <button type="button" id="showAllRiskBtn" class="btn small">Alle anzeigen</button>
-          <button type="button" id="showOpenRiskBtn" class="btn small">Nur offene</button>
-          <button type="button" id="showYesRiskBtn" class="btn small">Nur Ja</button>
-        </div>
-        <div id="riskList" class="risk-list"></div>
-        <div class="panel form-actions bottom-save">
-          <button type="button" id="saveRiskBottomBtn" class="btn primary">Risikoanalyse speichern</button>
+        <div class="risk-workspace">
+          <aside class="risk-tree-panel panel">
+            <div class="panel-head"><h2>Gefährdungsbaum</h2><button id="expandAllBtn" class="link-btn" type="button">Alle öffnen</button></div>
+            <div id="riskTree" class="risk-tree"></div>
+          </aside>
+          <div class="risk-content">
+            <div class="risk-toolbar panel">
+              <div id="activeRiskPath" class="active-risk-path">Alle Gefährdungen</div>
+              <div class="toolbar-actions">
+                <button type="button" data-filter="all" class="btn small active">Alle</button>
+                <button type="button" data-filter="open" class="btn small">Nur offene</button>
+                <button type="button" data-filter="yes" class="btn small">Nur Ja</button>
+              </div>
+            </div>
+            <div id="riskList" class="risk-list"></div>
+            <div class="panel form-actions bottom-save"><button type="button" id="saveRiskBottomBtn" class="btn primary">Risikoanalyse speichern</button></div>
+          </div>
         </div>
       </section>
 
-      <section id="norms" class="view">
-        <div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div>
-      </section>
+      <section id="norms" class="view"><div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div></section>
 
-      <section id="documents" class="view">
-        <div class="panel">
-          <h2>Dokumente</h2>
-          <div class="doc-actions">
-            <button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button>
-            <button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV exportieren</button>
-            <button id="exportWordBtn" class="btn primary" type="button">Word-Dokument exportieren</button>
-            <button id="printReportBtn" class="btn" type="button">PDF/Drucken</button>
-          </div>
-        </div>
-      </section>
+      <section id="documents" class="view"><div class="panel"><h2>Dokumente</h2><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div></section>
     </main>
   </div>
-  <script src="js/app.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

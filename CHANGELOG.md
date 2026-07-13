@@ -1,8 +1,10 @@
-# V0.5
+# Changelog
 
-- Risikoanalyse neu aufgebaut
-- Ja/Nein-Fragen sichtbar als Karten
-- Detailbewertung öffnet bei „Ja“
-- S/F/P-Bewertung
-- Maßnahmen und Restrisiko
-- Fallback-Gefährdungskatalog direkt in app.js, falls data/gefahren.json nicht lädt
+## Sprint 6.2
+- Modulare JavaScript-Struktur eingeführt
+- Gefährdungsbaum mit Gruppen und Untergruppen
+- Fortschritt, Anzahl Ja und offene Fragen je Gruppe
+- Filter Alle / Nur offene / Nur Ja
+- S/F/P-Risikoeinstufung
+- Speichern-Button am Ende der Projektdaten und Risikoanalyse
+- Mobile Darstellung verbessert
