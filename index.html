@@ -87,6 +87,16 @@
           <div><h2>Risikoanalyse</h2><p>Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
           <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span><span id="riskCompleteCount">0 vollständig abgeschlossen</span></div>
         </div>
+        <div class="panel risk-scope-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Gefährdungsgruppen auswählen</h2>
+              <p class="muted">Nicht relevante Gruppen können für dieses Projekt komplett abgewählt werden. Bei „Sondermaschine“ werden zunächst alle vorhandenen Standard-Gefährdungen aktiviert.</p>
+            </div>
+            <button id="selectAllRiskGroupsBtn" class="link-btn" type="button">Alle aktivieren</button>
+          </div>
+          <div id="riskGroupSelector" class="risk-group-selector"></div>
+        </div>
         <div class="risk-workspace">
           <aside class="risk-tree-panel panel">
             <div class="panel-head"><h2>Gefährdungsbaum</h2><button id="expandAllBtn" class="link-btn" type="button">Alle öffnen</button></div>

@@ -1,16 +1,11 @@
 # Changelog
 
-## Sprint 6.3
-- Automatische Statusampel je Gefährdung
-- Vollständigkeitsprüfung für Ja/Nein und Detailbewertung
-- Filter „Unvollständig“
-- Auswählbare Maßnahmenvorschläge
-- Übernahme ausgewählter Maßnahmen in die Dokumentation
-- Normen und Lebensphasen als übersichtliche Referenz-Chips
-- Fortschritt im Gefährdungsbaum basiert nun auf vollständig abgeschlossenen Fragen
+## Sprint 6.4
+- Sondermaschine lädt alle im Katalog vorhandenen Standard-Gefährdungen.
+- Gefährdungsgruppen können projektbezogen vollständig aktiviert oder abgewählt werden.
+- Auswahl wird im Projekt gespeichert.
+- Normen werden nach A-, B- und C-Normen gruppiert dargestellt.
+- Neue Gefährdungsgruppen erscheinen automatisch in der Auswahl.
 
-## Sprint 6.2
-- Gefährdungsbaum mit Gruppen und Untergruppen
-- Ja/Nein-Bewertung und Detailfelder
-- S/F/P-Risikoeinstufung
-- Lokale Projektspeicherung und Exporte
+## Sprint 6.3
+- Statusampel, Vollständigkeitsprüfung und Maßnahmenvorschläge.
