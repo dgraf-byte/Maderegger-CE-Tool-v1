@@ -10,6 +10,8 @@ let allOpen=false;
 export function initRisk(options){
   ctx=options;
   qs('#riskTree').addEventListener('click',onTreeClick);
+  qs('#riskGroupSelector').addEventListener('change',onGroupSelectionChange);
+  qs('#selectAllRiskGroupsBtn').onclick=selectAllGroups;
   qs('#riskList').addEventListener('click',onRiskClick);
   qs('#riskList').addEventListener('input',onRiskInput);
   qs('#riskList').addEventListener('change',onRiskChange);
@@ -41,6 +43,8 @@ export function renderRisk(){
     return;
   }
   project.risk??={};
+  project.excludedRiskGroups??=[];
+  renderGroupSelector(project);
   renderTree();
   const relevant=getRelevant(project);
   let shown=relevant.filter(item=>(!activeGroup||item.gruppe===activeGroup)&&(!activeSub||item.untergruppe===activeSub));
@@ -52,8 +56,52 @@ export function renderRisk(){
   updateSummary(relevant,project);
 }
 
-function getRelevant(project){
+function getCandidates(project){
+  // Sondermaschinen erhalten bewusst den vollständigen Standardkatalog,
+  // da Aufbau und Gefährdungen projektspezifisch stark variieren können.
+  if(project.machineType==='sondermaschine')return ctx.dangers;
   return ctx.dangers.filter(item=>!project.machineType||item.maschinen.includes(project.machineType));
+}
+
+function getRelevant(project){
+  const excluded=new Set(project.excludedRiskGroups||[]);
+  return getCandidates(project).filter(item=>!excluded.has(item.gruppe));
+}
+
+function renderGroupSelector(project){
+  const candidates=getCandidates(project);
+  const groups=[...new Set(candidates.map(item=>item.gruppe))].sort((a,b)=>a.localeCompare(b,'de'));
+  const excluded=new Set(project.excludedRiskGroups||[]);
+  qs('#riskGroupSelector').innerHTML=groups.length?groups.map(group=>{
+    const items=candidates.filter(item=>item.gruppe===group);
+    const active=!excluded.has(group);
+    return `<label class="risk-group-option ${active?'active':''}">
+      <input type="checkbox" data-risk-group="${escapeHtml(group)}" ${active?'checked':''}>
+      <span class="risk-group-option-text"><strong>${escapeHtml(group)}</strong><small>${items.length} Standard-Gefährdungen</small></span>
+    </label>`;
+  }).join(''):'<div class="empty-state">Für diese Maschinenart sind noch keine Gefährdungsgruppen hinterlegt.</div>';
+}
+
+function onGroupSelectionChange(event){
+  const input=event.target.closest('[data-risk-group]');
+  if(!input)return;
+  const project=activeProject(ctx.state);
+  const excluded=new Set(project.excludedRiskGroups||[]);
+  if(input.checked)excluded.delete(input.dataset.riskGroup);
+  else excluded.add(input.dataset.riskGroup);
+  project.excludedRiskGroups=[...excluded];
+  if(excluded.has(activeGroup)){activeGroup=null;activeSub=null;}
+  ctx.onChange({silent:true});
+  renderRisk();
+}
+
+function selectAllGroups(){
+  const project=activeProject(ctx.state);
+  if(!project)return;
+  project.excludedRiskGroups=[];
+  ctx.onChange({silent:true});
+  renderRisk();
+  toast('Alle Gefährdungsgruppen aktiviert');
 }
 
 function grouped(project){

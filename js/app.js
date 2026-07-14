@@ -14,5 +14,20 @@ initProject({state,machines,lifePhases,onChange:changed,onOpen:view=>showView(vi
 initRisk({state,dangers,onChange:changed});
 initExport(state,dangers);
 renderDashboard(state,dangers);renderProjectList(state,view=>showView(view,onView));renderNorms();
-function renderNorms(){const p=activeProject(state);const machine=machines.find(m=>m.id===p?.machineType);const ids=machine?.normen||['EN ISO 12100'];qs('#normList').innerHTML=ids.map(id=>{const n=norms.find(x=>x.id===id);return `<div class="norm-item"><strong>${escapeHtml(id)}</strong>${n?`<div class="muted">Typ ${escapeHtml(n.type)} · ${escapeHtml(n.title)}</div>`:''}</div>`}).join('')}
+function renderNorms(){
+  const p=activeProject(state);
+  const machine=machines.find(m=>m.id===p?.machineType);
+  let ids=machine?.normen||['EN ISO 12100'];
+  if(p?.machineType==='sondermaschine'){
+    ids=[...new Set([...ids,...dangers.flatMap(item=>item.normen||[])])];
+  }
+  const grouped={A:[],B:[],C:[],Weitere:[]};
+  ids.forEach(id=>{
+    const n=norms.find(x=>x.id===id);
+    const key=n?.type==='A'?'A':n?.type==='B'?'B':n?.type==='C'?'C':'Weitere';
+    grouped[key].push({id,n});
+  });
+  const labels={A:'A-Normen – Grundnormen',B:'B-Normen – Sicherheitsfachgrundnormen',C:'C-Normen – maschinenspezifische Normen',Weitere:'Weitere Normen / Referenzen'};
+  qs('#normList').innerHTML=Object.entries(grouped).filter(([,list])=>list.length).map(([key,list])=>`<section class="norm-group"><h3>${labels[key]}</h3><div class="norm-group-items">${list.map(({id,n})=>`<div class="norm-item"><strong>${escapeHtml(id)}</strong>${n?`<div class="muted">Typ ${escapeHtml(n.type)} · ${escapeHtml(n.title)}</div>`:''}</div>`).join('')}</div></section>`).join('');
+}
 window.addEventListener('error',e=>{console.error(e.error||e.message)});
