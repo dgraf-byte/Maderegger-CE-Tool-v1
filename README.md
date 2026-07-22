@@ -1,18 +1,21 @@
-# Maderegger CE Suite – Milestone 3, Phase 2
+# Maderegger CE Suite – Milestone 3.1
 
-Diese Version erweitert den Master-Gefährdungskatalog um eine datengetriebene intelligente Risikoanalyse.
+Diese Version korrigiert die Detailbewertung der Gefährdungen.
 
-## Neu
-- Komponenten-Vorauswahl mit Ja/Nein-Logik
-- Spezialgruppen werden bei klarer Nichtrelevanz ausgeblendet
-- Sondermaschinen behalten immer den vollständigen Standardkatalog
-- Risikoeinstufung vor und nach Schutzmaßnahmen
-- automatische Projektprüfung und Export-Sperre bei unvollständigen Bewertungen
-- automatische Sammlung dokumentierter Restrisiken
-- neue Datenquellen `components.json`, `fragen.json` und `regeln.json`
+## Ablauf
+
+1. Projekt und Maschinenart erfassen.
+2. Komponentenfragen beantworten.
+3. Gefährdungsgruppen festlegen.
+4. Gefährdungsfrage mit **Ja** oder **Nein** beantworten.
+5. Bei **Ja** öffnet sich unmittelbar die Detailbewertung mit:
+   - Beschreibung der konkreten Gefährdung
+   - S/F/P vor der Maßnahme
+   - vorgeschlagenen und eigenen Maßnahmen
+   - S/F/P nach der Maßnahme
+   - Restrisiko / Benutzerinformation
+   - Normenbezug und Lebensphasen
 
 ## Installation
-Den Inhalt dieses Ordners vollständig in das GitHub-Repository kopieren und bestehende Dateien ersetzen. Danach committen und pushen.
 
-## Fachlicher Hinweis
-Die Anwendung unterstützt die strukturierte Bearbeitung. Normenausgaben, Anwendungsbereich, Risikobeurteilung und Schutzmaßnahmen müssen projektbezogen durch eine fachkundige Person geprüft werden.
+Den gesamten Inhalt dieses Ordners in das GitHub-Repository kopieren und die vorhandenen Dateien ersetzen. Anschließend committen und pushen.
