@@ -10,6 +10,8 @@ let allOpen=false;
 export function initRisk(options){
   ctx=options;
   qs('#riskTree').addEventListener('click',onTreeClick);
+  qs('#componentQuestions').addEventListener('click',onComponentClick);
+  qs('#resetComponentsBtn').onclick=resetComponents;
   qs('#riskGroupSelector').addEventListener('change',onGroupSelectionChange);
   qs('#selectAllRiskGroupsBtn').onclick=selectAllGroups;
   qs('#riskList').addEventListener('click',onRiskClick);
@@ -25,7 +27,8 @@ export function initRisk(options){
   qs('#expandAllBtn').onclick=()=>{
     allOpen=!allOpen;
     qs('#expandAllBtn').textContent=allOpen?'Alle schließen':'Alle öffnen';
-    renderTree();
+    const residual=qs(`#residual-badge-${CSS.escape(id)}`);if(residual)residual.innerHTML=residualBadge(risk);
+  renderTree();
   };
   qs('#saveRiskBottomBtn').onclick=()=>{
     ctx.onChange();
@@ -43,7 +46,9 @@ export function renderRisk(){
     return;
   }
   project.risk??={};
+  project.components??={};
   project.excludedRiskGroups??=[];
+  renderComponents(project);
   renderGroupSelector(project);
   renderTree();
   const relevant=getRelevant(project);
@@ -57,11 +62,34 @@ export function renderRisk(){
 }
 
 function getCandidates(project){
-  // Sondermaschinen erhalten bewusst den vollständigen Standardkatalog,
-  // da Aufbau und Gefährdungen projektspezifisch stark variieren können.
+  // Sondermaschinen erhalten bewusst immer den vollständigen Standardkatalog.
   if(project.machineType==='sondermaschine')return ctx.dangers;
-  return ctx.dangers.filter(item=>!project.machineType||item.maschinen.includes(project.machineType));
+  let candidates=ctx.dangers.filter(item=>!project.machineType||item.maschinen.includes(project.machineType));
+  const answered=project.components||{};
+  const hiddenGroups=new Set();
+  const hiddenHazards=new Set();
+  for(const component of ctx.components||[]){
+    if(answered[component.id]!=='no')continue;
+    (component.groups||[]).forEach(group=>hiddenGroups.add(group));
+    (component.hazards||[]).forEach(id=>hiddenHazards.add(id));
+  }
+  // Eine Gruppe wird nur ausgeblendet, wenn alle Komponenten, die sie aktivieren können, mit Nein beantwortet sind.
+  for(const group of [...hiddenGroups]){
+    const related=(ctx.components||[]).filter(c=>(c.groups||[]).includes(group));
+    if(related.some(c=>answered[c.id]!=='no'))hiddenGroups.delete(group);
+  }
+  return candidates.filter(item=>!hiddenGroups.has(item.gruppe)&&!hiddenHazards.has(item.id));
 }
+
+function renderComponents(project){
+  const host=qs('#componentQuestions');if(!host)return;
+  host.innerHTML=(ctx.components||[]).map(component=>{const value=project.components?.[component.id]||'';return `<article class="component-question ${value?'answered':''}"><div><strong>${escapeHtml(component.label)}</strong><p>${escapeHtml(component.frage)}</p></div><div class="answer-buttons"><button type="button" class="answer-btn yes ${value==='yes'?'active':''}" data-component-answer="yes" data-component-id="${component.id}">Ja</button><button type="button" class="answer-btn no ${value==='no'?'active':''}" data-component-answer="no" data-component-id="${component.id}">Nein</button></div></article>`}).join('');
+  const done=Object.values(project.components||{}).filter(Boolean).length;
+  const hint=qs('#componentHint');if(hint)hint.textContent=project.machineType==='sondermaschine'?`Sondermaschine: Vollständiger Standardkatalog bleibt aktiv · ${done}/${(ctx.components||[]).length} Komponentenfragen beantwortet.`:`${done}/${(ctx.components||[]).length} Komponentenfragen beantwortet. Unbeantwortete Komponenten blenden keine Gefährdungen aus.`;
+}
+function onComponentClick(event){const btn=event.target.closest('[data-component-answer]');if(!btn)return;const project=activeProject(ctx.state);project.components??={};project.components[btn.dataset.componentId]=btn.dataset.componentAnswer;ctx.onChange({silent:true});renderRisk();}
+function resetComponents(){const project=activeProject(ctx.state);if(!project)return;project.components={};ctx.onChange({silent:true});renderRisk();toast('Komponentenfragen zurückgesetzt');}
+
 
 function getRelevant(project){
   const excluded=new Set(project.excludedRiskGroups||[]);
@@ -248,6 +276,7 @@ function card(item,risk){
         <label>Häufigkeit F<select data-risk-field="frequency" data-id="${item.id}"><option value="">– auswählen –</option><option value="1" ${risk.frequency==='1'?'selected':''}>F1 – selten / kurz</option><option value="2" ${risk.frequency==='2'?'selected':''}>F2 – häufig / lang</option></select></label>
         <label>Vermeidbarkeit P<select data-risk-field="possibility" data-id="${item.id}"><option value="">– auswählen –</option><option value="1" ${risk.possibility==='1'?'selected':''}>P1 – möglich</option><option value="2" ${risk.possibility==='2'?'selected':''}>P2 – kaum möglich</option></select></label>
         <div class="wide risk-rating-row"><strong>Risikoeinstufung vor Maßnahme</strong><span id="badge-${item.id}">${badge}</span></div>
+        <div class="wide residual-rating"><strong>Risikoeinstufung nach Maßnahme</strong><div class="residual-selects"><label>Rest-S<select data-risk-field="residualSeverity" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualSeverity==='1'?'selected':''}>S1</option><option value="2" ${risk.residualSeverity==='2'?'selected':''}>S2</option></select></label><label>Rest-F<select data-risk-field="residualFrequency" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualFrequency==='1'?'selected':''}>F1</option><option value="2" ${risk.residualFrequency==='2'?'selected':''}>F2</option></select></label><label>Rest-P<select data-risk-field="residualPossibility" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualPossibility==='1'?'selected':''}>P1</option><option value="2" ${risk.residualPossibility==='2'?'selected':''}>P2</option></select></label></div><span id="residual-badge-${item.id}">${residualBadge(risk)}</span></div>
         <div class="wide standard-measures">
           <div class="measure-head"><div><strong>Vorgeschlagene Maßnahmen</strong><div class="muted">Auswählen und anschließend übernehmen. Eigene Ergänzungen bleiben möglich.</div></div><button type="button" class="btn small" data-apply-measures="${item.id}">Ausgewählte übernehmen</button></div>
           <div class="measure-options">${(item.standardMassnahmen||[]).map((measure,index)=>`<label class="measure-option"><input type="checkbox" data-measure-option data-id="${item.id}" value="${escapeHtml(measure)}" ${selected.has(measure)?'checked':''}><span>${escapeHtml(measure)}</span></label>`).join('')}</div>
@@ -269,7 +298,8 @@ function isComplete(risk){
   if(risk.answer!=='yes')return false;
   const hasAssessment=Boolean(risk.severity&&risk.frequency&&risk.possibility);
   const hasMeasure=Boolean((risk.measure||'').trim()||(Array.isArray(risk.selectedMeasures)&&risk.selectedMeasures.length));
-  return hasAssessment&&hasMeasure;
+  const hasResidual=Boolean(risk.residualSeverity&&risk.residualFrequency&&risk.residualPossibility);
+  return hasAssessment&&hasMeasure&&hasResidual;
 }
 
 function cardStatus(risk){
@@ -277,6 +307,8 @@ function cardStatus(risk){
   if(risk.answer==='yes')return isComplete(risk)?'complete':'incomplete';
   return 'open';
 }
+
+function residualBadge(risk){const score=Number(risk.residualSeverity||0)*Number(risk.residualFrequency||0)*Number(risk.residualPossibility||0);return score?riskBadge(score):'<span class="risk-badge neutral">Restrisiko nicht bewertet</span>';}
 
 function riskBadge(score){
   const cls=score>=6?'high':score>=3?'medium':'low';
@@ -312,4 +344,7 @@ function updateSummary(relevant,project){
   qs('#riskYesCount').textContent=`${yes} Gefährdungen vorhanden`;
   const completeElement=qs('#riskCompleteCount');
   if(completeElement)completeElement.textContent=`${complete} vollständig abgeschlossen`;
+  updateProjectCheck(relevant,project,complete);
 }
+function updateProjectCheck(relevant,project,complete){const checks=[['Projektdaten',Boolean(project?.projectNo&&project?.projectName&&project?.machineType)],['Komponenten',Boolean(project&&(ctx.components||[]).every(c=>project.components?.[c.id]))],['Gefährdungsgruppen',Boolean(project&&relevant.length)],['Risikoanalyse',Boolean(relevant.length&&complete===relevant.length)],['Maßnahmen',Boolean(project&&relevant.filter(i=>project.risk?.[i.id]?.answer==='yes').every(i=>(project.risk[i.id].measure||'').trim()))],['Restrisiken',Boolean(project&&relevant.filter(i=>project.risk?.[i.id]?.answer==='yes').every(i=>project.risk[i.id].residualSeverity&&project.risk[i.id].residualFrequency&&project.risk[i.id].residualPossibility))]];const done=checks.filter(x=>x[1]).length;const pct=Math.round(done/checks.length*100);const list=qs('#projectCheckList');if(list)list.innerHTML=checks.map(([label,ok])=>`<span class="check-status ${ok?'ok':'open'}">${ok?'✓':'○'} ${escapeHtml(label)}</span>`).join('');const pe=qs('#projectCheckPercent');if(pe)pe.textContent=`${pct} %`;const bar=qs('#projectCheckBar');if(bar)bar.style.width=`${pct}%`;}
+
