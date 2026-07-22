@@ -332,6 +332,8 @@ function refreshCardState(id,risk){
     const score=calculateScore(risk);
     badge.innerHTML=score?riskBadge(score):'<span class="risk-badge neutral">noch nicht bewertet</span>';
   }
+  const residual=qs(`#residual-badge-${CSS.escape(id)}`);
+  if(residual)residual.innerHTML=residualBadge(risk);
   renderTree();
   const project=activeProject(ctx.state);
   updateSummary(getRelevant(project),project);

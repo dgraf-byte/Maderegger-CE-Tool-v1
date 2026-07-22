@@ -7,7 +7,14 @@ import{initExport}from'./export.js';
 import{qs,escapeHtml}from'./ui.js';
 const state=loadState();
 const [machines,norms,dangers,lifePhases,components]=await Promise.all(['data/maschinen.json','data/normen.json','data/gefahren.json','data/lebensphasen.json','data/components.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(`${url} konnte nicht geladen werden`);return r.json()}));
-function changed(){saveState(state);renderDashboard(state,dangers);renderProjectList(state,view=>showView(view,onView));renderNorms();renderResidualRisks();renderRisk();renderResidualRisks()}
+function changed(options={}){
+  saveState(state);
+  renderDashboard(state,dangers);
+  renderProjectList(state,view=>showView(view,onView));
+  renderNorms();
+  renderResidualRisks();
+  if(!options.silent)renderRisk();
+}
 function onView(view){if(view==='dashboard')renderDashboard(state,dangers);if(view==='risk')renderRisk();if(view==='norms')renderNorms();if(view==='documents')renderResidualRisks()}
 initNavigation(onView);
 initProject({state,machines,lifePhases,onChange:changed,onOpen:view=>showView(view,onView)});
