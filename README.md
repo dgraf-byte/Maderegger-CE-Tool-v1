@@ -1,17 +1,18 @@
-# Maderegger CE Suite – Milestone 3 / Phase 1
+# Maderegger CE Suite – Milestone 3, Phase 2
 
-Diese Version erweitert Sprint 6.4 um einen zentralen Master-Gefährdungskatalog.
+Diese Version erweitert den Master-Gefährdungskatalog um eine datengetriebene intelligente Risikoanalyse.
 
 ## Neu
-- 81 Gefährdungsfragen im Datenbestand
-- vollständiger Grundaufbau über mechanische, elektrische, thermische, Lärm-, Schwingungs-, Strahlungs-, Stoff-, Ergonomie-, Steuerungs-, Pneumatik-/Hydraulik-, Lebensphasen- und Umgebungsgefährdungen
-- dauerhafte, systematische IDs wie `12100-M-Q-001`
-- Normenbezug, Lebensphasen und Standardmaßnahmen je Frage
-- Sondermaschine zeigt weiterhin automatisch den gesamten Katalog
-- vorhandene maschinenspezifische Fördertechnik-Fragen bleiben erhalten
+- Komponenten-Vorauswahl mit Ja/Nein-Logik
+- Spezialgruppen werden bei klarer Nichtrelevanz ausgeblendet
+- Sondermaschinen behalten immer den vollständigen Standardkatalog
+- Risikoeinstufung vor und nach Schutzmaßnahmen
+- automatische Projektprüfung und Export-Sperre bei unvollständigen Bewertungen
+- automatische Sammlung dokumentierter Restrisiken
+- neue Datenquellen `components.json`, `fragen.json` und `regeln.json`
 
 ## Installation
-Den kompletten Inhalt dieses Ordners in das GitHub-Repository kopieren, vorhandene Dateien ersetzen, committen und pushen.
+Den Inhalt dieses Ordners vollständig in das GitHub-Repository kopieren und bestehende Dateien ersetzen. Danach committen und pushen.
 
 ## Fachlicher Hinweis
-Der Katalog ist eine strukturierte Arbeitshilfe und ersetzt weder den Originaltext der anzuwendenden Normen noch die fachkundige, projektspezifische Risikobeurteilung. Normausgaben und Anwendbarkeit sind projektbezogen zu prüfen.
+Die Anwendung unterstützt die strukturierte Bearbeitung. Normenausgaben, Anwendungsbereich, Risikobeurteilung und Schutzmaßnahmen müssen projektbezogen durch eine fachkundige Person geprüft werden.

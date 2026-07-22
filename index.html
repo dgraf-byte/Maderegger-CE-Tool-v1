@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2f3234" />
-  <title>Maderegger CE Suite – Sprint 6.3</title>
+  <title>Maderegger CE Suite – Milestone 3 · Phase 2</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite · Sprint 6.3</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · M3 Phase 2</span></div>
       </div>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
@@ -87,6 +87,19 @@
           <div><h2>Risikoanalyse</h2><p>Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
           <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span><span id="riskCompleteCount">0 vollständig abgeschlossen</span></div>
         </div>
+        <div class="panel component-panel">
+          <div class="panel-head">
+            <div><h2>Intelligente Maschinenvorauswahl</h2><p class="muted">Komponenten mit Ja oder Nein beantworten. Nicht vorhandene Spezialkomponenten können zugeordnete Gefährdungen automatisch ausblenden. Bei Sondermaschinen bleibt der vollständige Standardkatalog sichtbar.</p></div>
+            <button id="resetComponentsBtn" class="link-btn" type="button">Antworten zurücksetzen</button>
+          </div>
+          <div id="componentQuestions" class="component-questions"></div>
+          <div id="componentHint" class="scope-hint"></div>
+        </div>
+        <div class="panel project-check-panel">
+          <div class="panel-head"><div><h2>Projektprüfung</h2><p class="muted">Die Prüfung zeigt, welche Pflichtangaben vor einem Fachbericht noch fehlen.</p></div><strong id="projectCheckPercent">0 %</strong></div>
+          <div class="progress"><span id="projectCheckBar"></span></div>
+          <div id="projectCheckList" class="project-check-list"></div>
+        </div>
         <div class="panel risk-scope-panel">
           <div class="panel-head">
             <div>
@@ -119,7 +132,7 @@
 
       <section id="norms" class="view"><div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div></section>
 
-      <section id="documents" class="view"><div class="panel"><h2>Dokumente</h2><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div></section>
+      <section id="documents" class="view"><div class="panel"><h2>Dokumente</h2><p id="exportStatus" class="muted"></p><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div><div class="panel"><h2>Gesammelte Restrisiken</h2><div id="residualRiskList" class="residual-list"></div></div></section>
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
