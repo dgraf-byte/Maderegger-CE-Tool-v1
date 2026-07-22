@@ -1,0 +1,52 @@
+[
+  {
+    "id": "K-001",
+    "componentId": "electric",
+    "frage": "Besitzt die Maschine elektrische Betriebsmittel, Motoren oder einen Schaltschrank?"
+  },
+  {
+    "id": "K-002",
+    "componentId": "pneumatic",
+    "frage": "Sind pneumatische Zylinder, Ventile oder Druckluftspeicher vorhanden?"
+  },
+  {
+    "id": "K-003",
+    "componentId": "hydraulic",
+    "frage": "Sind hydraulische Antriebe, Zylinder oder Druckspeicher vorhanden?"
+  },
+  {
+    "id": "K-004",
+    "componentId": "hot_surfaces",
+    "frage": "Treten prozessbedingt heiße oder sehr kalte Oberflächen bzw. Medien auf?"
+  },
+  {
+    "id": "K-005",
+    "componentId": "noise",
+    "frage": "Können Antrieb, Fördergut oder Prozess eine relevante Geräuschbelastung verursachen?"
+  },
+  {
+    "id": "K-006",
+    "componentId": "vibration",
+    "frage": "Entstehen betriebsbedingt relevante Schwingungen oder Ganzkörper-/Hand-Arm-Vibrationen?"
+  },
+  {
+    "id": "K-007",
+    "componentId": "radiation",
+    "frage": "Sind Laser, UV-Quellen, starke optische Systeme oder andere Strahlungsquellen vorhanden?"
+  },
+  {
+    "id": "K-008",
+    "componentId": "hazardous_substances",
+    "frage": "Können Staub, Dämpfe, Gase, Flüssigkeiten oder andere gefährliche Stoffe freigesetzt werden?"
+  },
+  {
+    "id": "K-009",
+    "componentId": "vertical_axis",
+    "frage": "Gibt es vertikale oder geneigte bewegte Baugruppen, die absinken oder herabfallen können?"
+  },
+  {
+    "id": "K-010",
+    "componentId": "maintenance_access",
+    "frage": "Müssen Personen die Maschine betreten, besteigen oder erhöhte Wartungsplätze erreichen?"
+  }
+]

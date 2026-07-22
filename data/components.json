@@ -1,0 +1,92 @@
+[
+  {
+    "id": "electric",
+    "label": "Elektrische Ausrüstung / Antriebe",
+    "frage": "Besitzt die Maschine elektrische Betriebsmittel, Motoren oder einen Schaltschrank?",
+    "default": true,
+    "groups": []
+  },
+  {
+    "id": "pneumatic",
+    "label": "Pneumatik",
+    "frage": "Sind pneumatische Zylinder, Ventile oder Druckluftspeicher vorhanden?",
+    "groups": [
+      "Pneumatische und hydraulische Gefährdungen"
+    ],
+    "hazards": [
+      "12100-P-001",
+      "12100-P-002",
+      "12100-P-003"
+    ]
+  },
+  {
+    "id": "hydraulic",
+    "label": "Hydraulik",
+    "frage": "Sind hydraulische Antriebe, Zylinder oder Druckspeicher vorhanden?",
+    "groups": [
+      "Pneumatische und hydraulische Gefährdungen"
+    ],
+    "hazards": [
+      "12100-P-001",
+      "12100-P-002",
+      "12100-P-003",
+      "12100-P-004"
+    ]
+  },
+  {
+    "id": "hot_surfaces",
+    "label": "Heiße oder kalte Oberflächen",
+    "frage": "Treten prozessbedingt heiße oder sehr kalte Oberflächen bzw. Medien auf?",
+    "groups": [
+      "Thermische Gefährdungen"
+    ]
+  },
+  {
+    "id": "noise",
+    "label": "Relevante Geräuschemission",
+    "frage": "Können Antrieb, Fördergut oder Prozess eine relevante Geräuschbelastung verursachen?",
+    "groups": [
+      "Lärm"
+    ]
+  },
+  {
+    "id": "vibration",
+    "label": "Schwingungen / Vibration",
+    "frage": "Entstehen betriebsbedingt relevante Schwingungen oder Ganzkörper-/Hand-Arm-Vibrationen?",
+    "groups": [
+      "Schwingungen"
+    ]
+  },
+  {
+    "id": "radiation",
+    "label": "Strahlung / optische Systeme",
+    "frage": "Sind Laser, UV-Quellen, starke optische Systeme oder andere Strahlungsquellen vorhanden?",
+    "groups": [
+      "Strahlung"
+    ]
+  },
+  {
+    "id": "hazardous_substances",
+    "label": "Stoffe, Staub oder Emissionen",
+    "frage": "Können Staub, Dämpfe, Gase, Flüssigkeiten oder andere gefährliche Stoffe freigesetzt werden?",
+    "groups": [
+      "Gefährliche Stoffe und Emissionen"
+    ]
+  },
+  {
+    "id": "vertical_axis",
+    "label": "Vertikale / geneigte Bewegung",
+    "frage": "Gibt es vertikale oder geneigte bewegte Baugruppen, die absinken oder herabfallen können?",
+    "hazards": [
+      "12100-P-003"
+    ]
+  },
+  {
+    "id": "maintenance_access",
+    "label": "Betretbare Zugänge / Wartungsplätze",
+    "frage": "Müssen Personen die Maschine betreten, besteigen oder erhöhte Wartungsplätze erreichen?",
+    "groups": [
+      "Zugänge, Arbeitsplätze und Umgebung"
+    ]
+  }
+]
