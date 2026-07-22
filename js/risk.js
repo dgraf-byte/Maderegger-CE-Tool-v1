@@ -27,8 +27,7 @@ export function initRisk(options){
   qs('#expandAllBtn').onclick=()=>{
     allOpen=!allOpen;
     qs('#expandAllBtn').textContent=allOpen?'Alle schließen':'Alle öffnen';
-    const residual=qs(`#residual-badge-${CSS.escape(id)}`);if(residual)residual.innerHTML=residualBadge(risk);
-  renderTree();
+    renderTree();
   };
   qs('#saveRiskBottomBtn').onclick=()=>{
     ctx.onChange();
@@ -252,7 +251,8 @@ function card(item,risk){
   const badge=score?riskBadge(score):'<span class="risk-badge neutral">noch nicht bewertet</span>';
   const completionLabel=status==='complete'?'Vollständig':status==='incomplete'?'Bewertung offen':risk.answer==='no'?'Nicht vorhanden':'Offen';
   const selected=new Set(Array.isArray(risk.selectedMeasures)?risk.selectedMeasures:[]);
-  return `<article class="risk-card status-${status}" data-risk-id="${item.id}">
+  const answerClass=risk.answer==='yes'?' answer-yes':risk.answer==='no'?' answer-no':'';
+  return `<article class="risk-card status-${status}${answerClass}" data-risk-id="${item.id}">`
     <div class="risk-question">
       <div class="risk-question-head">
         <div>
@@ -320,7 +320,8 @@ function refreshCardState(id,risk){
   const cardElement=qs(`[data-risk-id="${CSS.escape(id)}"]`);
   if(!cardElement)return;
   const status=cardStatus(risk);
-  cardElement.className=`risk-card status-${status}`;
+  const answerClass=risk.answer==='yes'?' answer-yes':risk.answer==='no'?' answer-no':'';
+  cardElement.className=`risk-card status-${status}${answerClass}`;
   const completion=cardElement.querySelector('.completion-badge');
   if(completion){
     completion.className=`completion-badge ${status}`;
