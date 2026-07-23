@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2f3234" />
-  <title>Maderegger CE Suite – Milestone 3.1.2 · Detailbewertung</title>
+  <title>Maderegger CE Suite – Milestone 3.1.3 · Detailbewertung</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite · M3.1.2</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · M3.1.3</span></div>
       </div>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
@@ -136,6 +136,31 @@
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="js/app.js?v=3.1.2"></script>
+  <script>
+  // Notfall-Navigation: bleibt auch dann bedienbar, wenn das Hauptmodul nicht startet.
+  (function(){
+    const titles={dashboard:['Dashboard','CE- und Risikoanalyse für Fördertechnik'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikoanalyse','Gefährdungen systematisch durchspielen'],norms:['Normen','Automatisch vorgeschlagene A-, B- und C-Normen'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
+    function show(view){
+      document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));
+      document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+      const t=titles[view]||titles.dashboard;
+      const h=document.querySelector('#pageTitle'); const p=document.querySelector('#pageSubtitle');
+      if(h)h.textContent=t[0]; if(p)p.textContent=t[1];
+      document.querySelector('#sidebar')?.classList.remove('open');
+    }
+    document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.view)));
+    document.querySelector('#menuBtn')?.addEventListener('click',()=>document.querySelector('#sidebar')?.classList.toggle('open'));
+    window.__ceFallbackShow=show;
+    window.setTimeout(function(){
+      if(document.documentElement.dataset.appReady==='true')return;
+      const old=document.querySelector('#ce-start-warning'); if(old)old.remove();
+      const box=document.createElement('div'); box.id='ce-start-warning'; box.className='boot-error';
+      box.innerHTML='<strong>Die Fachdaten konnten noch nicht geladen werden.</strong><p>Die Navigation bleibt bedienbar. Bitte unten angezeigte Fehlermeldung fotografieren oder kopieren.</p><pre id="ce-error-detail">Startmodul wurde nicht vollständig initialisiert.</pre><button type="button" class="btn" id="ce-retry-btn">Erneut laden</button>';
+      document.querySelector('.content')?.prepend(box);
+      document.querySelector('#ce-retry-btn')?.addEventListener('click',()=>location.reload());
+    },5000);
+  })();
+  </script>
+  <script type="module" src="js/app.js?v=3.1.3"></script>
 </body>
 </html>
