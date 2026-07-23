@@ -151,16 +151,8 @@
     document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>show(btn.dataset.view)));
     document.querySelector('#menuBtn')?.addEventListener('click',()=>document.querySelector('#sidebar')?.classList.toggle('open'));
     window.__ceFallbackShow=show;
-    window.setTimeout(function(){
-      if(document.documentElement.dataset.appReady==='true')return;
-      const old=document.querySelector('#ce-start-warning'); if(old)old.remove();
-      const box=document.createElement('div'); box.id='ce-start-warning'; box.className='boot-error';
-      box.innerHTML='<strong>Die Fachdaten konnten noch nicht geladen werden.</strong><p>Die Navigation bleibt bedienbar. Bitte unten angezeigte Fehlermeldung fotografieren oder kopieren.</p><pre id="ce-error-detail">Startmodul wurde nicht vollständig initialisiert.</pre><button type="button" class="btn" id="ce-retry-btn">Erneut laden</button>';
-      document.querySelector('.content')?.prepend(box);
-      document.querySelector('#ce-retry-btn')?.addEventListener('click',()=>location.reload());
-    },5000);
   })();
   </script>
-  <script type="module" src="js/app.js?v=3.1.3"></script>
+  <script type="module" src="js/app.js?v=3.1.4"></script>
 </body>
 </html>
