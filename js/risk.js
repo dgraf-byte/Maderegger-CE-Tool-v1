@@ -63,7 +63,7 @@ export function renderRisk(){
 function getCandidates(project){
   // Sondermaschinen erhalten bewusst immer den vollständigen Standardkatalog.
   if(project.machineType==='sondermaschine')return ctx.dangers;
-  let candidates=ctx.dangers.filter(item=>!project.machineType||item.maschinen.includes(project.machineType));
+  let candidates=ctx.dangers.filter(item=>!project.machineType||(Array.isArray(item.maschinen)&&item.maschinen.includes(project.machineType)));
   const answered=project.components||{};
   const hiddenGroups=new Set();
   const hiddenHazards=new Set();
@@ -196,7 +196,7 @@ function onRiskClick(event){
     project.risk[id]??={};
     project.risk[id].answer=answerButton.dataset.answer;
     project.risk[id].updatedAt=new Date().toISOString();
-    ctx.onChange();
+    ctx.onChange({silent:true});
     renderRisk();
     return;
   }
