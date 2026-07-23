@@ -60,3 +60,4 @@
 .risk-card.answer-yes.status-incomplete{border-left-color:#d89311}
 .risk-card.answer-yes.status-complete{border-left-color:var(--green)}
 .boot-error{margin:18px 30px 0;padding:16px 18px;border:2px solid #b42318;border-radius:12px;background:#fff0ee;color:#7a1b13}.boot-error p{margin:7px 0 0}.app-loading{pointer-events:none;opacity:.75}
+.boot-error{margin:16px 30px 0;padding:16px 18px;border:2px solid #b42318;border-radius:12px;background:#fff1f0;color:#6b1711;position:relative;z-index:200}.boot-error pre{white-space:pre-wrap;word-break:break-word;background:#fff;padding:10px;border-radius:8px;border:1px solid #efc4c0;max-height:220px;overflow:auto}.boot-error .btn{margin-right:8px;margin-top:8px}
