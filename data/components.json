@@ -88,5 +88,38 @@
     "groups": [
       "Zugänge, Arbeitsplätze und Umgebung"
     ]
+  },
+  {
+    "id": "networked",
+    "label": "Vernetzte / fernzugängliche Maschine",
+    "frage": "Besitzt die Maschine Netzwerk-, Fernwartungs-, Funk- oder sonstige digitale Schnittstellen?",
+    "groups": [
+      "Digitale Sicherheit und Schutz gegen Korrumpierung"
+    ]
+  },
+  {
+    "id": "safety_software",
+    "label": "Sicherheitsrelevante Software / programmierbare Steuerung",
+    "frage": "Kann Software, Parametrierung oder ein programmierbares System Sicherheitsfunktionen beeinflussen?",
+    "groups": [
+      "Digitale Sicherheit und Schutz gegen Korrumpierung",
+      "Sicherheitsfunktionen und Steuerung"
+    ]
+  },
+  {
+    "id": "adaptive_ai",
+    "label": "Selbstlernende oder adaptive Funktion",
+    "frage": "Verwendet die Maschine selbstlernende, adaptive oder KI-basierte Funktionen mit Einfluss auf Sicherheit oder Verhalten?",
+    "groups": [
+      "Selbstentwickelndes Verhalten / KI"
+    ]
+  },
+  {
+    "id": "machinery_assembly",
+    "label": "Gesamtheit von Maschinen",
+    "frage": "Werden mehrere Maschinen oder dazugehörige Produkte so verbunden und gesteuert, dass sie als funktionale Gesamtheit zusammenwirken?",
+    "groups": [
+      "Schnittstellen und Gesamtheit von Maschinen"
+    ]
   }
 ]

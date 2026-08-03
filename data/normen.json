@@ -1,12 +1,57 @@
 [
-  {"id":"EN ISO 12100","title":"Sicherheit von Maschinen – Risikobeurteilung und Risikominderung","type":"A"},
-  {"id":"EN 619","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an mechanische Fördereinrichtungen für Stückgut","type":"C"},
-  {"id":"EN 618","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an mechanische Fördereinrichtungen für Schüttgut, ausgenommen ortsfeste Gurtförderer","type":"C"},
-  {"id":"EN 620","title":"Stetigförderer und Systeme – Sicherheitsanforderungen an ortsfeste Gurtförderer für Schüttgut","type":"C"},
-  {"id":"EN 60204-1","title":"Sicherheit von Maschinen – Elektrische Ausrüstung von Maschinen","type":"B"},
-  {"id":"EN ISO 13850","title":"Sicherheit von Maschinen – Not-Halt-Funktion","type":"B"},
-  {"id":"EN ISO 13857","title":"Sicherheitsabstände gegen das Erreichen von Gefährdungsbereichen","type":"B"},
-  {"id":"EN ISO 14120","title":"Trennende Schutzeinrichtungen","type":"B"},
-  {"id":"EN ISO 14119","title":"Verriegelungseinrichtungen in Verbindung mit trennenden Schutzeinrichtungen","type":"B"},
-  {"id":"EN ISO 13849-1","title":"Sicherheitsbezogene Teile von Steuerungen – Gestaltungsleitsätze","type":"B"}
+  {
+    "id": "EU 2023/1230",
+    "title": "Verordnung über Maschinen – grundlegende Sicherheits- und Gesundheitsschutzanforderungen in Anhang III",
+    "type": "Rechtsakt"
+  },
+  {
+    "id": "EN ISO 12100",
+    "title": "Sicherheit von Maschinen – Risikobeurteilung und Risikominderung",
+    "type": "A"
+  },
+  {
+    "id": "EN 619",
+    "title": "Stetigförderer und Systeme – Sicherheitsanforderungen an mechanische Fördereinrichtungen für Stückgut",
+    "type": "C"
+  },
+  {
+    "id": "EN 618",
+    "title": "Stetigförderer und Systeme – Sicherheitsanforderungen an mechanische Fördereinrichtungen für Schüttgut, ausgenommen ortsfeste Gurtförderer",
+    "type": "C"
+  },
+  {
+    "id": "EN 620",
+    "title": "Stetigförderer und Systeme – Sicherheitsanforderungen an ortsfeste Gurtförderer für Schüttgut",
+    "type": "C"
+  },
+  {
+    "id": "EN 60204-1",
+    "title": "Sicherheit von Maschinen – Elektrische Ausrüstung von Maschinen",
+    "type": "B"
+  },
+  {
+    "id": "EN ISO 13850",
+    "title": "Sicherheit von Maschinen – Not-Halt-Funktion",
+    "type": "B"
+  },
+  {
+    "id": "EN ISO 13857",
+    "title": "Sicherheitsabstände gegen das Erreichen von Gefährdungsbereichen",
+    "type": "B"
+  },
+  {
+    "id": "EN ISO 14120",
+    "title": "Trennende Schutzeinrichtungen",
+    "type": "B"
+  },
+  {
+    "id": "EN ISO 14119",
+    "title": "Verriegelungseinrichtungen in Verbindung mit trennenden Schutzeinrichtungen",
+    "type": "B"
+  },
+  {
+    "id": "EN ISO 13849-1",
+    "title": "Sicherheitsbezogene Teile von Steuerungen – Gestaltungsleitsätze",
+    "type": "B"
+  }
 ]

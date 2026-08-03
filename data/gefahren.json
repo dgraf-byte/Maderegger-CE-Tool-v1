@@ -2205,5 +2205,166 @@
       "Leitungen und Schläuche geschützt führen.",
       "Austretende Medien auffangen und Flächen rutschhemmend ausführen."
     ]
+  },
+  {
+    "id": "EU1230-DIG-001",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier",
+      "schneckenfoerderer",
+      "portal-mix",
+      "vibrorinne",
+      "sondermaschine"
+    ],
+    "gruppe": "Digitale Sicherheit und Schutz gegen Korrumpierung",
+    "untergruppe": "Unbefugter Zugriff / Verbindung",
+    "bereich": "Netzwerk, Fernwartung und digitale Schnittstellen",
+    "frage": "Kann eine beabsichtigte oder unbeabsichtigte Verbindung zu einer anderen Einrichtung zu einer gefährlichen Situation oder zu einer Beeinträchtigung der Konformität führen?",
+    "normen": [
+      "EU 2023/1230",
+      "EN ISO 12100",
+      "EN ISO 13849-1"
+    ],
+    "lebensphasen": [
+      "Inbetriebnahme",
+      "Bedienung",
+      "Wartung",
+      "Fernwartung"
+    ],
+    "standardMassnahmen": [
+      "Digitale Schnittstellen und Fernzugänge auf erforderliche Funktionen begrenzen.",
+      "Authentifizierung, Rollen- und Rechtekonzept vorsehen.",
+      "Sicherheitsrelevante Funktionen gegen unbefugte Veränderung schützen.",
+      "Sicheren Zustand bei Kommunikationsfehlern oder Manipulationsversuchen festlegen."
+    ]
+  },
+  {
+    "id": "EU1230-DIG-002",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier",
+      "schneckenfoerderer",
+      "portal-mix",
+      "vibrorinne",
+      "sondermaschine"
+    ],
+    "gruppe": "Digitale Sicherheit und Schutz gegen Korrumpierung",
+    "untergruppe": "Software und Konfiguration",
+    "bereich": "Sicherheitsrelevante Software / Parameter",
+    "frage": "Können Software, Konfigurationsdaten oder Parameter, die für die Konformität relevant sind, unbemerkt verändert werden?",
+    "normen": [
+      "EU 2023/1230",
+      "EN ISO 13849-1",
+      "EN 60204-1"
+    ],
+    "lebensphasen": [
+      "Inbetriebnahme",
+      "Bedienung",
+      "Wartung",
+      "Änderung"
+    ],
+    "standardMassnahmen": [
+      "Zugriff auf sicherheitsrelevante Software und Parameter beschränken.",
+      "Änderungen nachvollziehbar protokollieren.",
+      "Freigegebene Softwarestände und Parameterstände dokumentieren.",
+      "Wiederherstellung eines geprüften Zustands ermöglichen."
+    ]
+  },
+  {
+    "id": "EU1230-CTRL-001",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier",
+      "schneckenfoerderer",
+      "portal-mix",
+      "vibrorinne",
+      "sondermaschine"
+    ],
+    "gruppe": "Sicherheitsfunktionen und Steuerung",
+    "untergruppe": "Böswillige Eingriffe / Manipulation",
+    "bereich": "Steuerungssystem",
+    "frage": "Bleiben Sicherheitsfunktionen und Steuerungen auch bei vernünftigerweise vorhersehbaren böswilligen Eingriffen oder Manipulationsversuchen wirksam?",
+    "normen": [
+      "EU 2023/1230",
+      "EN ISO 13849-1",
+      "EN 60204-1"
+    ],
+    "lebensphasen": [
+      "Bedienung",
+      "Wartung",
+      "Fernwartung"
+    ],
+    "standardMassnahmen": [
+      "Sicherheitsfunktionen unabhängig von nicht vertrauenswürdigen Kommunikationspfaden ausführen.",
+      "Fehler und Manipulationsversuche erkennen und in einen sicheren Zustand überführen.",
+      "Zugriffsschutz und Integritätsprüfung für relevante Steuerungskomponenten vorsehen."
+    ]
+  },
+  {
+    "id": "EU1230-AI-001",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier",
+      "schneckenfoerderer",
+      "portal-mix",
+      "vibrorinne",
+      "sondermaschine"
+    ],
+    "gruppe": "Selbstentwickelndes Verhalten / KI",
+    "untergruppe": "Verhaltensänderung nach Inbetriebnahme",
+    "bereich": "Adaptive oder selbstlernende Funktion",
+    "frage": "Kann sich das Verhalten der Maschine nach dem Inverkehrbringen selbst verändern und dadurch neue oder veränderte Risiken erzeugen?",
+    "normen": [
+      "EU 2023/1230",
+      "EN ISO 12100"
+    ],
+    "lebensphasen": [
+      "Bedienung",
+      "Wartung",
+      "Änderung"
+    ],
+    "standardMassnahmen": [
+      "Sicherheitsrelevante Grenzen für lernende oder adaptive Funktionen festlegen.",
+      "Verhaltensänderungen überwachen und auf sichere Bereiche beschränken.",
+      "Validierte Rückfallebene oder sicheren Zustand vorsehen.",
+      "Daten- und Änderungsgrundlagen dokumentieren."
+    ]
+  },
+  {
+    "id": "EU1230-ASM-001",
+    "maschinen": [
+      "foerderband",
+      "rollenbahn",
+      "stahlscharnier",
+      "schneckenfoerderer",
+      "portal-mix",
+      "vibrorinne",
+      "sondermaschine"
+    ],
+    "gruppe": "Schnittstellen und Gesamtheit von Maschinen",
+    "untergruppe": "Wechselwirkungen",
+    "bereich": "Verkettete Maschinen / Anlagen",
+    "frage": "Entstehen durch Wechselwirkungen zwischen verbundenen Maschinen oder dazugehörigen Produkten zusätzliche Gefährdungen oder unklare Sicherheitsfunktionen?",
+    "normen": [
+      "EU 2023/1230",
+      "EN ISO 12100"
+    ],
+    "lebensphasen": [
+      "Montage",
+      "Inbetriebnahme",
+      "Bedienung",
+      "Störung",
+      "Wartung"
+    ],
+    "standardMassnahmen": [
+      "Grenzen und Verantwortungsbereiche der Gesamtheit eindeutig festlegen.",
+      "Gemeinsame Betriebsarten, Not-Halt-Wirkbereiche und Wiederanlaufbedingungen definieren.",
+      "Schnittstellensignale und sichere Zustände dokumentieren und validieren.",
+      "Risikobeurteilung für Wechselwirkungen der Gesamtheit durchführen."
+    ]
   }
 ]
