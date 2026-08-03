@@ -1,5 +1,5 @@
-const KEY='maderegger-ce-suite-m312';
-const LEGACY_KEYS=['maderegger-ce-suite-s62','maderegger-ce-suite-s63','maderegger-ce-suite'];
+const KEY='maderegger-ce-suite-m320';
+const LEGACY_KEYS=['maderegger-ce-suite-m312','maderegger-ce-suite-s62','maderegger-ce-suite-s63','maderegger-ce-suite'];
 
 function emptyState(){return{projects:[],activeProjectId:null}}
 function object(value){return value&&typeof value==='object'&&!Array.isArray(value)?value:{}}
@@ -13,7 +13,8 @@ function normalizeProject(value){
     components:object(p.components),
     excludedRiskGroups:Array.isArray(p.excludedRiskGroups)?p.excludedRiskGroups.filter(x=>typeof x==='string'):[],
     equipment:Array.isArray(p.equipment)?p.equipment:[],
-    lifePhases:Array.isArray(p.lifePhases)?p.lifePhases:[]
+    lifePhases:Array.isArray(p.lifePhases)?p.lifePhases:[],
+    legalBasis:String(p.legalBasis||'EU 2023/1230')
   };
 }
 function normalizeState(value){
