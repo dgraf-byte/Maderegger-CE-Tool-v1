@@ -252,7 +252,8 @@ function card(item,risk){
   const completionLabel=status==='complete'?'Vollständig':status==='incomplete'?'Bewertung offen':risk.answer==='no'?'Nicht vorhanden':'Offen';
   const selected=new Set(Array.isArray(risk.selectedMeasures)?risk.selectedMeasures:[]);
   const answerClass=risk.answer==='yes'?' answer-yes':risk.answer==='no'?' answer-no':'';
-  return `<article class="risk-card status-${status}${answerClass}" data-risk-id="${item.id}">`
+
+  return `<article class="risk-card status-${status}${answerClass}" data-risk-id="${item.id}">
     <div class="risk-question">
       <div class="risk-question-head">
         <div>
@@ -279,7 +280,7 @@ function card(item,risk){
         <div class="wide residual-rating"><strong>Risikoeinstufung nach Maßnahme</strong><div class="residual-selects"><label>Rest-S<select data-risk-field="residualSeverity" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualSeverity==='1'?'selected':''}>S1</option><option value="2" ${risk.residualSeverity==='2'?'selected':''}>S2</option></select></label><label>Rest-F<select data-risk-field="residualFrequency" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualFrequency==='1'?'selected':''}>F1</option><option value="2" ${risk.residualFrequency==='2'?'selected':''}>F2</option></select></label><label>Rest-P<select data-risk-field="residualPossibility" data-id="${item.id}"><option value="">–</option><option value="1" ${risk.residualPossibility==='1'?'selected':''}>P1</option><option value="2" ${risk.residualPossibility==='2'?'selected':''}>P2</option></select></label></div><span id="residual-badge-${item.id}">${residualBadge(risk)}</span></div>
         <div class="wide standard-measures">
           <div class="measure-head"><div><strong>Vorgeschlagene Maßnahmen</strong><div class="muted">Auswählen und anschließend übernehmen. Eigene Ergänzungen bleiben möglich.</div></div><button type="button" class="btn small" data-apply-measures="${item.id}">Ausgewählte übernehmen</button></div>
-          <div class="measure-options">${(item.standardMassnahmen||[]).map((measure,index)=>`<label class="measure-option"><input type="checkbox" data-measure-option data-id="${item.id}" value="${escapeHtml(measure)}" ${selected.has(measure)?'checked':''}><span>${escapeHtml(measure)}</span></label>`).join('')}</div>
+          <div class="measure-options">${(item.standardMassnahmen||[]).map(measure=>`<label class="measure-option"><input type="checkbox" data-measure-option data-id="${item.id}" value="${escapeHtml(measure)}" ${selected.has(measure)?'checked':''}><span>${escapeHtml(measure)}</span></label>`).join('')}</div>
         </div>
         <label class="wide">Gewählte technische und organisatorische Maßnahmen<textarea rows="4" data-risk-field="measure" data-id="${item.id}" placeholder="Umgesetzte Maßnahmen dokumentieren …">${escapeHtml(risk.measure||'')}</textarea></label>
         <label class="wide">Restrisiko / Benutzerinformation<textarea rows="3" data-risk-field="residualRisk" data-id="${item.id}" placeholder="Verbleibendes Restrisiko und Hinweise für Betriebsanleitung …">${escapeHtml(risk.residualRisk||'')}</textarea></label>
