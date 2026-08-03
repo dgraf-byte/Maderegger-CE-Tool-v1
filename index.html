@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2f3234" />
-  <title>Maderegger CE Suite – Milestone 3.1.3 · Detailbewertung</title>
+  <title>Maderegger CE Suite – M3.2.0 · Verordnung (EU) 2023/1230</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite · M3.1.4</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · M3.2.0</span></div>
       </div>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
@@ -29,7 +29,7 @@
         <button id="menuBtn" class="icon-btn mobile-only" type="button" aria-label="Menü öffnen">☰</button>
         <div class="topbar-title">
           <h1 id="pageTitle">Dashboard</h1>
-          <p id="pageSubtitle">CE- und Risikoanalyse für Fördertechnik</p>
+          <p id="pageSubtitle">Risikobeurteilung nach Verordnung (EU) 2023/1230</p>
         </div>
         <div class="top-actions">
           <button id="newProjectBtn" class="btn primary" type="button">+ Neues Projekt</button>
@@ -41,7 +41,7 @@
         <div class="grid cards">
           <article class="card"><span class="label">Aktuelles Projekt</span><h2 id="dashProject">Kein Projekt gewählt</h2><p id="dashCustomer">Bitte Projektdaten erfassen.</p></article>
           <article class="card"><span class="label">Gesamtfortschritt</span><h2 id="dashProgress">0%</h2><div class="progress"><span id="progressBar"></span></div></article>
-          <article class="card"><span class="label">Risikoanalyse</span><h2 id="dashRisk">0 / 0</h2><p id="dashRiskInfo">Noch keine Gefährdungen bewertet.</p></article>
+          <article class="card"><span class="label">Risikobeurteilung</span><h2 id="dashRisk">0 / 0</h2><p id="dashRiskInfo">Noch keine Gefährdungen bewertet.</p></article>
         </div>
         <div class="panel">
           <div class="panel-head"><h2>Projektliste</h2><span class="muted">Lokal gespeicherte Projekte</span></div>
@@ -73,6 +73,17 @@
           <label>Geschwindigkeit<input name="speed" placeholder="m/min"></label>
           <label>Fördergut / Produkt<input name="material"></label>
 
+          <h2>Rechtsgrundlage und bestimmungsgemäße Verwendung</h2>
+          <label>Rechtsgrundlage
+            <select name="legalBasis">
+              <option value="EU 2023/1230">Verordnung (EU) 2023/1230 über Maschinen</option>
+            </select>
+          </label>
+          <label>Geplantes Inverkehrbringen<input name="placingOnMarketDate" type="date"></label>
+          <label class="full-width">Bestimmungsgemäße Verwendung<textarea name="intendedUse" rows="4" placeholder="Zweck, Bediener, Produkte, Betriebsarten und Einsatzbedingungen …"></textarea></label>
+          <label class="full-width">Vernünftigerweise vorhersehbare Fehlanwendung<textarea name="foreseeableMisuse" rows="4" placeholder="Vorhersehbare Fehlanwendungen und daraus entstehende Grenzen …"></textarea></label>
+          <label class="full-width">Grenzen der Maschine / des dazugehörigen Produkts<textarea name="machineLimits" rows="4" placeholder="Räumliche, zeitliche, verwendungsbezogene und umgebungsbezogene Grenzen …"></textarea></label>
+
           <h2>Ausstattung</h2>
           <div id="equipmentList" class="check-grid"></div>
           <h2>Lebensphasen</h2>
@@ -84,7 +95,7 @@
 
       <section id="risk" class="view">
         <div class="panel risk-head">
-          <div><h2>Risikoanalyse</h2><p>Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
+          <div><h2>Risikobeurteilung</h2><p>Bewertung gemäß Verordnung (EU) 2023/1230, Anhang III. Alle Fragen mit <strong>Ja</strong> oder <strong>Nein</strong> beantworten. Bei „Ja“ öffnet sich die Detailbewertung.</p></div>
           <div class="risk-summary"><strong id="riskAnswered">0 / 0 beantwortet</strong><span id="riskYesCount">0 Gefährdungen vorhanden</span><span id="riskCompleteCount">0 vollständig abgeschlossen</span></div>
         </div>
         <div class="panel component-panel">
@@ -130,16 +141,16 @@
         </div>
       </section>
 
-      <section id="norms" class="view"><div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Liste wird aus der gewählten Maschinenart abgeleitet.</p><div id="normList" class="norm-list"></div></div></section>
+      <section id="norms" class="view"><div class="panel"><h2>Rechtsgrundlage</h2><div class="norm-item legal-act"><strong>Verordnung (EU) 2023/1230 über Maschinen</strong><div class="muted">Grundlegende Sicherheits- und Gesundheitsschutzanforderungen: Anhang III. Anwendung grundsätzlich ab 20.01.2027.</div></div></div><div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Normen unterstützen die technische Konkretisierung der Anforderungen aus Anhang III.</p><div id="normList" class="norm-list"></div></div></section>
 
-      <section id="documents" class="view"><div class="panel"><h2>Dokumente</h2><p id="exportStatus" class="muted"></p><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div><div class="panel"><h2>Gesammelte Restrisiken</h2><div id="residualRiskList" class="residual-list"></div></div></section>
+      <section id="documents" class="view"><div class="panel"><h2>Dokumente nach Verordnung (EU) 2023/1230</h2><p class="muted">Risikobeurteilung, technische Unterlagen und EU-Konformitätserklärung sind auf die Verordnung auszurichten.</p><p id="exportStatus" class="muted"></p><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div><div class="panel"><h2>Gesammelte Restrisiken</h2><div id="residualRiskList" class="residual-list"></div></div></section>
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script>
   // Notfall-Navigation: bleibt auch dann bedienbar, wenn das Hauptmodul nicht startet.
   (function(){
-    const titles={dashboard:['Dashboard','CE- und Risikoanalyse für Fördertechnik'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikoanalyse','Gefährdungen systematisch durchspielen'],norms:['Normen','Automatisch vorgeschlagene A-, B- und C-Normen'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
+    const titles={dashboard:['Dashboard','Risikobeurteilung nach Verordnung (EU) 2023/1230'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikobeurteilung','Verordnung (EU) 2023/1230 · Anhang III'],norms:['Rechtsgrundlage & Normen','Verordnung (EU) 2023/1230 und technische Normen'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
     function show(view){
       document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));
       document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
@@ -161,6 +172,6 @@
     },5000);
   })();
   </script>
-  <script type="module" src="js/app.js?v=3.1.3"></script>
+  <script type="module" src="js/app.js?v=3.2.0"></script>
 </body>
 </html>

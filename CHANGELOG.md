@@ -1,11 +1,9 @@
 # Changelog
 
-## Milestone 3.1 – Detailbewertung wiederhergestellt
-
-- Fehler behoben: Nach Auswahl von **Ja** wird die vollständige Detailbewertung wieder geöffnet.
-- S/F/P-Bewertung vor der Maßnahme ist wieder sichtbar.
-- Maßnahmenauswahl und Freitextfeld bleiben vollständig nutzbar.
-- S/F/P-Restrisikobewertung nach der Maßnahme ist wieder sichtbar.
-- Kartenstatus bleibt beim Bearbeiten korrekt erhalten.
-- Fehler im Schalter **Alle öffnen / Alle schließen** behoben.
-- Komponentenlogik, Gruppenfilter und Projektprüfung aus Phase 2 bleiben bestehen.
+## M3.2.0 – Verordnung (EU) 2023/1230
+- Rechtsgrundlage auf Verordnung (EU) 2023/1230 umgestellt.
+- Verweise auf Anhang III ergänzt.
+- Projektdaten um bestimmungsgemäße Verwendung, vorhersehbare Fehlanwendung und Maschinengrenzen erweitert.
+- Neue Gefährdungen zu Schutz gegen Korrumpierung, sicherheitsrelevanter Software, Manipulation, adaptiven/KI-Funktionen und Gesamtheiten von Maschinen.
+- Dokumentexport auf die neue Rechtsgrundlage umgestellt.
+- Bestehende Risikobeurteilung nach EN ISO 12100 bleibt als Methodik erhalten.
