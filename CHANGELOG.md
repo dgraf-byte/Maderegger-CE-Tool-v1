@@ -14,3 +14,9 @@
 - Begründungen werden projektbezogen gespeichert und in den Word-Bericht übernommen.
 - Exportprüfung blockiert unbegründete Gruppenausschlüsse.
 - Hinweis: Gefährdungskatalog ist keine vollständige Anhang-III-Konformitätsmatrix.
+
+
+## M3.2.2 – Kein automatisches Ausblenden durch Komponentenfragen
+- Antworten auf Komponentenfragen führen nicht mehr zum stillen Ausblenden von Gefährdungen.
+- Manuelle Gruppenausschlüsse bleiben mit Begründung möglich.
+- Risikoansicht und Export verwenden dieselbe Filterregel.
