@@ -64,20 +64,10 @@ function getCandidates(project){
   // Sondermaschinen erhalten bewusst immer den vollständigen Standardkatalog.
   if(project.machineType==='sondermaschine')return ctx.dangers;
   let candidates=ctx.dangers.filter(item=>!project.machineType||(Array.isArray(item.maschinen)&&item.maschinen.includes(project.machineType)));
-  const answered=project.components||{};
-  const hiddenGroups=new Set();
-  const hiddenHazards=new Set();
-  for(const component of ctx.components||[]){
-    if(answered[component.id]!=='no')continue;
-    (component.groups||[]).forEach(group=>hiddenGroups.add(group));
-    (component.hazards||[]).forEach(id=>hiddenHazards.add(id));
-  }
-  // Eine Gruppe wird nur ausgeblendet, wenn alle Komponenten, die sie aktivieren können, mit Nein beantwortet sind.
-  for(const group of [...hiddenGroups]){
-    const related=(ctx.components||[]).filter(c=>(c.groups||[]).includes(group));
-    if(related.some(c=>answered[c.id]!=='no'))hiddenGroups.delete(group);
-  }
-  return candidates.filter(item=>!hiddenGroups.has(item.gruppe)&&!hiddenHazards.has(item.id));
+  // Komponentenfragen sind Hinweise, keine hinreichende Grundlage zum automatischen
+  // Ausschluss von Gefährdungen. Auch ein "Nein" kann indirekte Risiken nicht ausschließen.
+  // Ausschlüsse erfolgen ausschließlich manuell und mit dokumentierter Begründung.
+  return candidates;
 }
 
 function renderComponents(project){
