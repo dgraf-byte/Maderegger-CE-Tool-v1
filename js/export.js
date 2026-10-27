@@ -1,7 +1,13 @@
 import{qs,download,escapeHtml}from'./ui.js';import{activeProject}from'./storage.js';
 let componentData=[];
 export function initExport(state,dangers,components=[]){componentData=components;qs('#exportJsonBtn').onclick=()=>download('ce-projekt.json',JSON.stringify(activeProject(state),null,2),'application/json');qs('#exportCsvBtn').onclick=()=>{if(validate(state,dangers))exportCsv(state,dangers)};qs('#exportWordBtn').onclick=()=>{if(validate(state,dangers))exportWord(state,dangers)};qs('#printReportBtn').onclick=()=>{if(validate(state,dangers))window.print()}}
-function relevant(p,dangers){if(!p)return[];if(p.machineType==='sondermaschine')return dangers.filter(d=>!(p.excludedRiskGroups||[]).includes(d.gruppe));let list=dangers.filter(d=>!p.machineType||d.maschinen.includes(p.machineType));const hidden=new Set();for(const c of componentData){if(p.components?.[c.id]==='no')(c.groups||[]).forEach(g=>hidden.add(g))}for(const g of [...hidden]){const rel=componentData.filter(c=>(c.groups||[]).includes(g));if(rel.some(c=>p.components?.[c.id]!=='no'))hidden.delete(g)}return list.filter(d=>!hidden.has(d.gruppe)&&!(p.excludedRiskGroups||[]).includes(d.gruppe))}
+function relevant(p,dangers){
+  if(!p)return[];
+  const excluded=new Set(p.excludedRiskGroups||[]);
+  // Die Komponentenantworten blenden keine Gefährdungen automatisch aus.
+  // Maßgeblich sind Maschinenart und explizit begründete Gruppenausschlüsse.
+  return dangers.filter(d=>(p.machineType==='sondermaschine'||!p.machineType||(Array.isArray(d.maschinen)&&d.maschinen.includes(p.machineType)))&&!excluded.has(d.gruppe));
+}
 function complete(r){if(r.answer==='no')return true;if(r.answer!=='yes')return false;return Boolean(r.severity&&r.frequency&&r.possibility&&(r.measure||'').trim()&&r.residualSeverity&&r.residualFrequency&&r.residualPossibility)}
 function validate(state,dangers){const p=activeProject(state);if(!p){alert('Bitte zuerst ein Projekt auswählen.');return false}const rel=relevant(p,dangers);const missing=rel.filter(d=>!complete(p.risk?.[d.id]||{}));if((p.excludedRiskGroups||[]).some(g=>!(p.excludedRiskReasons?.[g]||'').trim())){alert('Export gesperrt: Für abgewählte Gefährdungsgruppen fehlt eine Begründung.');return false}if(missing.length){alert(`Export gesperrt: ${missing.length} relevante Gefährdungsbewertungen sind noch unvollständig. Verwenden Sie den Filter „Unvollständig“. JSON-Sicherungen sind weiterhin möglich.`);return false}return true}
 function rows(state,dangers){const p=activeProject(state);return relevant(p,dangers).map(d=>{const r=p.risk?.[d.id]||{};return[d.id,d.gruppe,d.untergruppe,d.bereich,d.frage,r.answer||'',r.description||'',r.severity||'',r.frequency||'',r.possibility||'',r.measure||'',r.residualSeverity||'',r.residualFrequency||'',r.residualPossibility||'',r.residualRisk||'',(d.normen||[]).join('; ')]})}
