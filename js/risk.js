@@ -114,8 +114,16 @@ function onGroupSelectionChange(event){
   if(!input)return;
   const project=activeProject(ctx.state);
   const excluded=new Set(project.excludedRiskGroups||[]);
-  if(input.checked)excluded.delete(input.dataset.riskGroup);
-  else excluded.add(input.dataset.riskGroup);
+  if(input.checked){
+    excluded.delete(input.dataset.riskGroup);
+    if(project.excludedRiskReasons)delete project.excludedRiskReasons[input.dataset.riskGroup];
+  }else{
+    const reason=prompt('Warum ist die Gefährdungsgruppe „'+input.dataset.riskGroup+'“ für diese Maschine nicht anwendbar? (Begründung für den Bericht)');
+    if(!reason||!reason.trim()){input.checked=true;toast('Deaktivierung nur mit Begründung möglich');return;}
+    project.excludedRiskReasons??={};
+    project.excludedRiskReasons[input.dataset.riskGroup]=reason.trim();
+    excluded.add(input.dataset.riskGroup);
+  }
   project.excludedRiskGroups=[...excluded];
   if(excluded.has(activeGroup)){activeGroup=null;activeSub=null;}
   ctx.onChange({silent:true});
@@ -126,6 +134,7 @@ function selectAllGroups(){
   const project=activeProject(ctx.state);
   if(!project)return;
   project.excludedRiskGroups=[];
+  project.excludedRiskReasons={};
   ctx.onChange({silent:true});
   renderRisk();
   toast('Alle Gefährdungsgruppen aktiviert');
