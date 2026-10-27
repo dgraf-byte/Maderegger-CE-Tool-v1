@@ -7,3 +7,10 @@
 - Neue Gefährdungen zu Schutz gegen Korrumpierung, sicherheitsrelevanter Software, Manipulation, adaptiven/KI-Funktionen und Gesamtheiten von Maschinen.
 - Dokumentexport auf die neue Rechtsgrundlage umgestellt.
 - Bestehende Risikobeurteilung nach EN ISO 12100 bleibt als Methodik erhalten.
+
+
+## M3.2.1 – Sicherung der Gruppenabwahl und Bericht
+- Gefährdungsgruppen lassen sich nur mit dokumentierter Begründung deaktivieren.
+- Begründungen werden projektbezogen gespeichert und in den Word-Bericht übernommen.
+- Exportprüfung blockiert unbegründete Gruppenausschlüsse.
+- Hinweis: Gefährdungskatalog ist keine vollständige Anhang-III-Konformitätsmatrix.
