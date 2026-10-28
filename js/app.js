@@ -1,5 +1,5 @@
 import{loadState,saveState,activeProject}from'./storage.js';
-import{initNavigation,showView}from'./navigation.js';
+import{initNavigation,showView}from'./navigation.js?v=3.3.2';
 import{initProject,renderProjectList}from'./project.js';
 import{renderDashboard}from'./dashboard.js';
 import{initRisk,renderRisk}from'./risk.js';
