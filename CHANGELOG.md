@@ -37,3 +37,9 @@
 ## M3.3 – Fachliche Katalogprüfung (begonnen)
 - Bestand und offene Abgleichpunkte in `docs/M3.3-katalogpruefung.md` dokumentiert.
 - Keine ungeprüfte Behauptung einer vollständigen Anhang-III-Abdeckung.
+
+
+## M3.3.0 – Pilot-Prüfmatrix Anhang III
+- Separater Menüpunkt mit sieben vorläufigen Prüfpunkten.
+- Projektbezogener Status und Begründung/Nachweis werden lokal gespeichert.
+- Ausdrücklich keine vollständige oder amtlich verifizierte Anhang-III-Matrix; Exportfreigabe unverändert.
