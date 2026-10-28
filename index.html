@@ -89,7 +89,7 @@
           <h2>Lebensphasen</h2>
           <div id="lifePhaseList" class="check-grid"></div>
 
-          <div class="form-actions bottom-save"><button type="button" id="saveProjectBottomBtn" class="btn primary">Projekt speichern</button></div>
+          <div class="form-actions bottom-save"><button type="button" id="saveProjectBottomBtn" class="btn primary">Projekt speichern</button><button type="button" id="nextFromProjectBtn" class="btn primary">Weiter zur Risikoanalyse →</button></div>
         </form>
       </section>
 
@@ -164,6 +164,13 @@
     window.__ceFallbackShow=show;
 
   })();
+  </script>
+  <script>
+  document.querySelector('#nextFromProjectBtn')?.addEventListener('click',function(){
+    document.querySelector('#saveProjectBottomBtn')?.click();
+    document.querySelector('[data-view="risk"]')?.click();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
   </script>
   <script type="module" src="js/app.js?v=3.2.3"></script>
 </body>
