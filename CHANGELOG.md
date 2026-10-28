@@ -48,3 +48,8 @@
 ## M3.3.1 – Mobiles Menü bei Anhang III schließen
 - Fehlenden Navigationstitel für neuen Menüpunkt Anhang III ergänzt.
 - Robuste Fallback-Titelbehandlung verhindert Abbruch vor dem Schließen der Seitenleiste.
+
+
+## M3.3.2 – Mobiles Menü und Cache-Korrektur
+- Seitenleiste wird vor weiteren Navigationselementen geschlossen, auch bei nachfolgendem Fehler.
+- Modulimport für Navigation und App versioniert, damit Browser eine alte Navigation nicht weiterverwenden.
