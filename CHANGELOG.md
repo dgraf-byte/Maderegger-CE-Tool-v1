@@ -26,3 +26,9 @@
 - Navigation bindet Klicks nur einmal; Hauptnavigation ersetzt Notfall-Handler nach Modulstart.
 - Irreführende 5-Sekunden-Startwarnung entfernt.
 - Versionsanzeige und Beschreibung der Komponentenlogik aktualisiert.
+
+
+## M3.2.4 – Weiter-Schaltfläche für mobile Projekterfassung
+- Am Ende der Projektdaten: „Weiter zur Risikoanalyse“.
+- Vor dem Wechsel wird die vorhandene Speicherfunktion aufgerufen.
+- Funktioniert über die bestehende Navigation auch als Fallback.
