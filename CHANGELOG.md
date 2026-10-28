@@ -20,3 +20,9 @@
 - Antworten auf Komponentenfragen führen nicht mehr zum stillen Ausblenden von Gefährdungen.
 - Manuelle Gruppenausschlüsse bleiben mit Begründung möglich.
 - Risikoansicht und Export verwenden dieselbe Filterregel.
+
+
+## M3.2.3 – Navigation stabilisiert
+- Navigation bindet Klicks nur einmal; Hauptnavigation ersetzt Notfall-Handler nach Modulstart.
+- Irreführende 5-Sekunden-Startwarnung entfernt.
+- Versionsanzeige und Beschreibung der Komponentenlogik aktualisiert.
