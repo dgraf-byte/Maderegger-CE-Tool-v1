@@ -43,3 +43,8 @@
 - Separater Menüpunkt mit sieben vorläufigen Prüfpunkten.
 - Projektbezogener Status und Begründung/Nachweis werden lokal gespeichert.
 - Ausdrücklich keine vollständige oder amtlich verifizierte Anhang-III-Matrix; Exportfreigabe unverändert.
+
+
+## M3.3.1 – Mobiles Menü bei Anhang III schließen
+- Fehlenden Navigationstitel für neuen Menüpunkt Anhang III ergänzt.
+- Robuste Fallback-Titelbehandlung verhindert Abbruch vor dem Schließen der Seitenleiste.
