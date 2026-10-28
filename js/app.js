@@ -4,10 +4,11 @@ import{initProject,renderProjectList}from'./project.js';
 import{renderDashboard}from'./dashboard.js';
 import{initRisk,renderRisk}from'./risk.js';
 import{initExport}from'./export.js';
+import{initAnnex,renderAnnex}from'./annex.js';
 import{qs,escapeHtml}from'./ui.js';
 
 let state=loadState();
-let machines=[];let norms=[];let dangers=[];let lifePhases=[];let components=[];
+let machines=[];let norms=[];let dangers=[];let lifePhases=[];let components=[];let annexPoints=[];
 let navigationInitialized=false;
 
 function safeNavigation(){
@@ -25,13 +26,14 @@ async function readJson(url){
 }
 
 async function boot(){
-  [machines,norms,dangers,lifePhases,components]=await Promise.all([
+  [machines,norms,dangers,lifePhases,components,annexPoints]=await Promise.all([
     readJson('data/maschinen.json'),readJson('data/normen.json'),readJson('data/gefahren.json'),
-    readJson('data/lebensphasen.json'),readJson('data/components.json')
+    readJson('data/lebensphasen.json'),readJson('data/components.json'),readJson('data/anhang-iii-pruefpunkte.json')
   ]);
   initProject({state,machines,lifePhases,onChange:changed,onOpen:view=>showView(view,onView)});
   initRisk({state,dangers,components,onChange:changed});
   initExport(state,dangers,components);
+  initAnnex({state,points:annexPoints,onChange:changed});
   renderAll();
   document.documentElement.dataset.appReady='true';
   document.querySelector('#ce-start-warning')?.remove();
@@ -39,7 +41,7 @@ async function boot(){
 function renderAll(){
   renderDashboard(state,dangers);
   renderProjectList(state,view=>showView(view,onView));
-  renderNorms();renderResidualRisks();
+  renderNorms();renderResidualRisks();renderAnnex();
 }
 function changed(options={}){saveState(state);renderAll();if(!options.silent)renderRisk()}
 function onView(view){
@@ -48,6 +50,7 @@ function onView(view){
     if(view==='risk'&&dangers.length)renderRisk();
     if(view==='norms'&&norms.length)renderNorms();
     if(view==='documents'&&dangers.length)renderResidualRisks();
+    if(view==='annex')renderAnnex();
   }catch(error){showBootError(error)}
 }
 function renderNorms(){
