@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2f3234" />
-  <title>Maderegger CE Suite – M3.2.3 · Verordnung (EU) 2023/1230</title>
+  <title>Maderegger CE Suite – M3.3.0 · Verordnung (EU) 2023/1230</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,14 +12,14 @@
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">M</div>
-        <div><strong>Maderegger</strong><span>CE Suite · M3.2.3</span></div>
+        <div><strong>Maderegger</strong><span>CE Suite · M3.3.0</span></div>
       </div>
       <nav class="main-nav" aria-label="Hauptnavigation">
         <button class="nav-btn active" data-view="dashboard">Dashboard</button>
         <button class="nav-btn" data-view="project">Projektdaten</button>
         <button class="nav-btn" data-view="risk">Risikoanalyse</button>
         <button class="nav-btn" data-view="norms">Normen</button>
-        <button class="nav-btn" data-view="documents">Dokumente</button>
+        <button class="nav-btn" data-view="annex">Anhang III</button><button class="nav-btn" data-view="documents">Dokumente</button>
       </nav>
       <div class="sidebar-note">Daten werden lokal in diesem Browser gespeichert.</div>
     </aside>
@@ -143,6 +143,7 @@
 
       <section id="norms" class="view"><div class="panel"><h2>Rechtsgrundlage</h2><div class="norm-item legal-act"><strong>Verordnung (EU) 2023/1230 über Maschinen</strong><div class="muted">Grundlegende Sicherheits- und Gesundheitsschutzanforderungen: Anhang III. Anwendung grundsätzlich ab 20.01.2027.</div></div></div><div class="panel"><h2>Vorgeschlagene Normen</h2><p>Die Normen unterstützen die technische Konkretisierung der Anforderungen aus Anhang III. Die Anwendbarkeit und die jeweils gültige Ausgabe müssen projektbezogen geprüft werden.</p><div id="normList" class="norm-list"></div></div></section>
 
+      <section id="annex" class="view"><div class="panel"><h2>Anhang III – Prüfpunkte (Pilot)</h2><p>Vorläufige, unvollständige Prüfliste. Die vollständige Anwendbarkeit der Anforderungen ist gesondert anhand des amtlichen Rechtstexts zu prüfen. Status und Begründung werden im Projekt gespeichert.</p><p id="annexStatus" class="muted"></p></div><div id="annexMatrix"></div></section>
       <section id="documents" class="view"><div class="panel"><h2>Dokumente nach Verordnung (EU) 2023/1230</h2><p class="muted">Risikobeurteilung, technische Unterlagen und EU-Konformitätserklärung sind auf die Verordnung auszurichten.</p><p id="exportStatus" class="muted"></p><div class="doc-actions"><button id="exportJsonBtn" class="btn" type="button">JSON-Sicherung</button><button id="exportCsvBtn" class="btn primary" type="button">Excel/CSV</button><button id="exportWordBtn" class="btn primary" type="button">Word</button><button id="printReportBtn" class="btn" type="button">PDF/Drucken</button></div></div><div class="panel"><h2>Gesammelte Restrisiken</h2><div id="residualRiskList" class="residual-list"></div></div></section>
     </main>
   </div>
@@ -150,7 +151,7 @@
   <script>
   // Notfall-Navigation: bleibt auch dann bedienbar, wenn das Hauptmodul nicht startet.
   (function(){
-    const titles={dashboard:['Dashboard','Risikobeurteilung nach Verordnung (EU) 2023/1230'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikobeurteilung','Verordnung (EU) 2023/1230 · Anhang III'],norms:['Rechtsgrundlage & Normen','Verordnung (EU) 2023/1230 und technische Normen'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
+    const titles={dashboard:['Dashboard','Risikobeurteilung nach Verordnung (EU) 2023/1230'],project:['Projektdaten','Stammdaten, Ausstattung und Lebensphasen'],risk:['Risikobeurteilung','Verordnung (EU) 2023/1230 · Anhang III'],norms:['Rechtsgrundlage & Normen','Verordnung (EU) 2023/1230 und technische Normen'],annex:['Anhang III','Vorläufige Prüfpunkte dokumentieren'],documents:['Dokumente','Sicherung und Berichte erzeugen']};
     function show(view){
       document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===view));
       document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
@@ -172,6 +173,6 @@
     window.scrollTo({top:0,behavior:'smooth'});
   });
   </script>
-  <script type="module" src="js/app.js?v=3.2.3"></script>
+  <script type="module" src="js/app.js?v=3.3.0"></script>
 </body>
 </html>
