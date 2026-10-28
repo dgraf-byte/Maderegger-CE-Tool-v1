@@ -32,3 +32,8 @@
 - Am Ende der Projektdaten: „Weiter zur Risikoanalyse“.
 - Vor dem Wechsel wird die vorhandene Speicherfunktion aufgerufen.
 - Funktioniert über die bestehende Navigation auch als Fallback.
+
+
+## M3.3 – Fachliche Katalogprüfung (begonnen)
+- Bestand und offene Abgleichpunkte in `docs/M3.3-katalogpruefung.md` dokumentiert.
+- Keine ungeprüfte Behauptung einer vollständigen Anhang-III-Abdeckung.
